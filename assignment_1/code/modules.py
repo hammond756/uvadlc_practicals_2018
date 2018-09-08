@@ -4,7 +4,13 @@ You should fill in code into indicated sections.
 """
 import numpy as np
 
+def exp_normalize(x):
+    b = x.max()
+    y = np.exp(x - b)
+    return y / y.sum()
+
 class LinearModule(object):
+
   """
   Linear module. Applies a linear transformation to the input data. 
   """
@@ -22,16 +28,16 @@ class LinearModule(object):
     
     Also, initialize gradients with zeros.
     """
-    
-    ########################
-    # PUT YOUR CODE HERE  #
-    #######################
-    self.params = {'weight': None, 'bias': None}
-    self.grads = {'weight': None, 'bias': None}
-    raise NotImplementedError
-    ########################
-    # END OF YOUR CODE    #
-    #######################
+
+    self.params = {
+        'weight': np.random.normal(loc=0, scale=0.0001, size=(in_features, out_features)),
+        'bias': np.zeros(out_features)
+    }
+
+    self.grads = {
+        'weight': np.zeros_like(self.params['weight']),
+        'bias': np.zeros_like(self.params['bias'])
+    }
 
   def forward(self, x):
     """
@@ -47,14 +53,19 @@ class LinearModule(object):
     
     Hint: You can store intermediate variables inside the object. They can be used in backward pass computation.                                                           #
     """
-    
-    ########################
-    # PUT YOUR CODE HERE  #
-    #######################
-    raise NotImplementedError
-    ########################
-    # END OF YOUR CODE    #
-    #######################
+
+
+    self.prev_x = x
+
+    # Expand dimensions of parameters so we can matmul with batched input
+    W = self.params['weight'][None, :]
+    b = self.params['bias'][None, :]
+
+    out = np.matmul(x, W) + b
+
+    # TODO: is this needed?
+    # remove extra dimension
+    out = out.squeeze(0)
 
     return out
 
@@ -72,13 +83,13 @@ class LinearModule(object):
     layer parameters in self.grads['weight'] and self.grads['bias']. 
     """
 
-    ########################
-    # PUT YOUR CODE HERE  #
-    #######################
-    raise NotImplementedError
-    ########################
-    # END OF YOUR CODE    #
-    #######################
+     # TODO: Check this: this way of averaging feels kinda implicit
+    self.grads['weight'] = np.matmul(self.prev_x.T, dout)
+    self.grads['bias'] = dout.mean(axis=0)
+
+    assert self.grads['weight'].shape == self.params['weight'].shape, "Gradient matrix should be the same shape as params: {}, {}".format(self.grads['weight'].shape, self.params['weight'].shape)
+
+    dx = np.matmul(dout, self.params['weight'].T)
     
     return dx
 
@@ -101,13 +112,8 @@ class ReLUModule(object):
     Hint: You can store intermediate variables inside the object. They can be used in backward pass computation.                                                           #
     """
 
-    ########################
-    # PUT YOUR CODE HERE  #
-    #######################
-    raise NotImplementedError
-    ########################
-    # END OF YOUR CODE    #
-    #######################
+    self.prev_x = x
+    out = x*(x > 0.0)
 
     return out
 
@@ -116,7 +122,7 @@ class ReLUModule(object):
     Backward pass.
 
     Args:
-      dout: gradients of the previous modul
+      dout: gradients of the previous module
     Returns:
       dx: gradients with respect to the input of the module
     
@@ -124,13 +130,7 @@ class ReLUModule(object):
     Implement backward pass of the module.
     """
 
-    ########################
-    # PUT YOUR CODE HERE  #
-    #######################
-    raise NotImplementedError
-    ########################
-    # END OF YOUR CODE    #
-    #######################    
+    dx = dout*(self.prev_x > 0)
 
     return dx
 
@@ -153,13 +153,8 @@ class SoftMaxModule(object):
     Hint: You can store intermediate variables inside the object. They can be used in backward pass computation.                                                           #
     """
 
-    ########################
-    # PUT YOUR CODE HERE  #
-    #######################
-    raise NotImplementedError
-    ########################
-    # END OF YOUR CODE    #
-    #######################
+    self.S = exp_normalize(x)
+    out = self.S
 
     return out
 
@@ -168,21 +163,19 @@ class SoftMaxModule(object):
     Backward pass.
 
     Args:
-      dout: gradients of the previous modul
+      dout: gradients of the previous module
     Returns:
       dx: gradients with respect to the input of the module
     
     TODO:
     Implement backward pass of the module.
     """
+    print(self.S.shape)
+    dsoft = -np.matmul(self.S.T, self.S) # dit moet 7 x 52 x 52 worden
+    diag = np.multiply(self.S, (1 - self.S)) # dit moet 7 x 52 worden
+    np.fill_diagonal(dsoft, diag) # dit moet dan 7 diagonals vullen
 
-    ########################
-    # PUT YOUR CODE HERE  #
-    #######################
-    raise NotImplementedError
-    ########################
-    # END OF YOUR CODE    #
-    #######################
+    dx = np.matmul(dout, dsoft)
 
     return dx
 
