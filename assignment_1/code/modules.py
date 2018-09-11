@@ -170,12 +170,15 @@ class SoftMaxModule(object):
     TODO:
     Implement backward pass of the module.
     """
-    print(self.S.shape)
-    dsoft = -np.matmul(self.S.T, self.S) # dit moet 7 x 52 x 52 worden
-    diag = np.multiply(self.S, (1 - self.S)) # dit moet 7 x 52 worden
-    np.fill_diagonal(dsoft, diag) # dit moet dan 7 diagonals vullen
 
-    dx = np.matmul(dout, dsoft)
+    dsoft = -np.einsum('ij,ik->ijk', self.S, self.S) # NxD * NxD -> NxDxD
+    diag = np.einsum('ij,ik->ijk', self.S, (1 - self.S)).diagonal(axis1=1, axis2=2) # -> NxD (diagonals)
+
+    diag_idx = np.arange(0, dout.shape[1])
+    dsoft[:, diag_idx, diag_idx] = diag
+
+    # dx = np.matmul(dout[:, None, :], dsoft).squeeze(1)
+    dx = np.einsum('ik,ijk->ij', dout, dsoft)
 
     return dx
 
