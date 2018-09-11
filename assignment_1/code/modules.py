@@ -4,10 +4,10 @@ You should fill in code into indicated sections.
 """
 import numpy as np
 
-def exp_normalize(x):
-    b = x.max()
+def exp_normalize_batch(x):
+    b = x.max(axis=1)[:, None]
     y = np.exp(x - b)
-    return y / y.sum()
+    return y / y.sum(axis=1)[:, None]
 
 class LinearModule(object):
 
@@ -153,7 +153,7 @@ class SoftMaxModule(object):
     Hint: You can store intermediate variables inside the object. They can be used in backward pass computation.                                                           #
     """
 
-    self.S = exp_normalize(x)
+    self.S = exp_normalize_batch(x)
     out = self.S
 
     return out
