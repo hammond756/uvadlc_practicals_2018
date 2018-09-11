@@ -200,13 +200,9 @@ class CrossEntropyModule(object):
     Implement forward pass of the module. 
     """
 
-    ########################
-    # PUT YOUR CODE HERE  #
-    #######################
-    raise NotImplementedError
-    ########################
-    # END OF YOUR CODE    #
-    #######################
+    idxs = np.argmax(y, axis=1)
+    out = -np.log(x[range(x.shape[0]), idxs])
+    out = out.mean()
 
     return out
 
@@ -224,12 +220,7 @@ class CrossEntropyModule(object):
     Implement backward pass of the module.
     """
 
-    ########################
-    # PUT YOUR CODE HERE  #
-    #######################
-    raise NotImplementedError
-    ########################
-    # END OF YOUR CODE    #
-    #######################
+    dx = -y / x
+    dx /= x.shape[0]
 
     return dx
