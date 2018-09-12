@@ -10,7 +10,7 @@ import argparse
 import numpy as np
 import os
 from mlp_numpy import MLP
-from modules import CrossEntropyModule
+from modules import CrossEntropyModule, LinearModule
 import cifar10_utils
 
 # Default constants
@@ -43,13 +43,7 @@ def accuracy(predictions, targets):
   Implement accuracy computation.
   """
 
-  ########################
-  # PUT YOUR CODE HERE  #
-  #######################
-  raise NotImplementedError
-  ########################
-  # END OF YOUR CODE    #
-  #######################
+  accuracy = (predictions.argmax(axis=1) == targets.argmax(axis=1)).mean()
 
   return accuracy
 
@@ -73,13 +67,61 @@ def train():
   else:
     dnn_hidden_units = []
 
-  ########################
-  # PUT YOUR CODE HERE  #
-  #######################
-  raise NotImplementedError
-  ########################
-  # END OF YOUR CODE    #
-  #######################
+  # Load data
+  cifar10 = cifar10_utils.get_cifar10(data_dir='cifar10/cifar-10-batches-py', one_hot=True, validation_size=5000)
+  train_set = cifar10['train']
+  test_set = cifar10['test']
+  val_set = cifar10['validation']
+
+  # Initialize model
+  input_dim = train_set.images[0, :, :, :].size
+  n_classes = train_set.labels[0, :].size
+
+  model = MLP(input_dim, dnn_hidden_units, n_classes)
+  cross_entropy = CrossEntropyModule()
+
+  curr_epoch = 0
+  train_acc = []
+  while train_set.epochs_completed <= FLAGS.max_steps:
+    x, y = train_set.next_batch(FLAGS.batch_size)
+    x = x.reshape(FLAGS.batch_size, -1)
+
+    out = model.forward(x)
+    loss = cross_entropy.forward(out, y)
+
+    train_acc.append(accuracy(out, y))
+
+    # backward pass
+    dout = cross_entropy.backward(out, y)
+    _ = model.backward(dout)
+
+    # update weights using calculated gradients
+    for module in model.modules:
+      if type(module) == LinearModule:
+        module.params['weight'] = module.params['weight'] - FLAGS.learning_rate * module.grads['weight']
+        module.params['bias'] = module.params['bias'] - FLAGS.learning_rate * module.grads['bias']
+
+
+    if train_set.epochs_completed > curr_epoch:
+
+      val_inputs = val_set.images.reshape(val_set.images.shape[0], -1)
+
+      pred = model.forward(val_inputs)
+      targ = val_set.labels
+
+      acc = accuracy(pred, targ)
+
+      print()
+      print("- - - - - - - - - -")
+      print('- EPOCH:\t\t\t', curr_epoch)
+      print('- TRAIN ACC: \t\t\t', np.array(train_acc).mean())
+      print('- VALIDATION ACC:\t\t', acc)
+      print("- - - - - - - - - -")
+
+      train_acc = []
+      curr_epoch = train_set.epochs_completed
+
+      if curr_epoch == 20: break
 
 def print_flags():
   """
