@@ -6,7 +6,9 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-from modules import * 
+from modules import *
+
+from functools import reduce
 
 class MLP(object):
   """
@@ -33,13 +35,19 @@ class MLP(object):
     Implement initialization of the network.
     """
 
-    ########################
-    # PUT YOUR CODE HERE  #
-    #######################
-    raise NotImplementedError
-    ########################
-    # END OF YOUR CODE    #
-    #######################
+    if len(n_hidden) == 0:
+        self.modules = [LinearModule(n_inputs, n_classes)]
+    else:
+        self.modules = [LinearModule(n_inputs, n_hidden[0])]
+        self.modules.append(ReLUModule())
+
+        for i in range(1, len(n_hidden)):
+            self.modules.append(LinearModule(n_hidden[i-1], n_hidden[i]))
+            self.modules.append(ReLUModule())
+
+        self.modules.append(LinearModule(n_hidden[-1], n_classes))
+
+    self.modules.append(SoftMaxModule())
 
   def forward(self, x):
     """
@@ -55,15 +63,7 @@ class MLP(object):
     Implement forward pass of the network.
     """
 
-    ########################
-    # PUT YOUR CODE HERE  #
-    #######################
-    raise NotImplementedError
-    ########################
-    # END OF YOUR CODE    #
-    #######################
-
-    return out
+    return reduce(lambda out, module: module.forward(out), self.modules, x)
 
   def backward(self, dout):
     """
@@ -76,12 +76,7 @@ class MLP(object):
     Implement backward pass of the network.
     """
     
-    ########################
-    # PUT YOUR CODE HERE  #
-    #######################
-    raise NotImplementedError
-    ########################
-    # END OF YOUR CODE    #
-    #######################
+    return reduce(lambda dx, module: module.backward(dx), reversed(self.modules), dout)
 
-    return
+  def __str__(self):
+    return str([module for module in self.modules])
