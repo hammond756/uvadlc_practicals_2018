@@ -34,13 +34,11 @@ class CustomBatchNormAutograd(nn.Module):
     """
     super(CustomBatchNormAutograd, self).__init__()
 
-    ########################
-    # PUT YOUR CODE HERE  #
-    #######################
-    raise NotImplementedError
-    ########################
-    # END OF YOUR CODE    #
-    #######################
+    self.n_neurons = n_neurons
+    self.eps = eps
+
+    self.gamma = nn.Parameter(torch.ones((n_neurons,)))
+    self.beta = nn.Parameter(torch.zeros((n_neurons,)))
 
   def forward(self, input):
     """
@@ -57,13 +55,15 @@ class CustomBatchNormAutograd(nn.Module):
       For the case that you make use of torch.var be aware that the flag unbiased=False should be set.
     """
 
-    ########################
-    # PUT YOUR CODE HERE  #
-    #######################
-    raise NotImplementedError
-    ########################
-    # END OF YOUR CODE    #
-    #######################
+    assert input.shape[1] == self.n_neurons, "input should be of size {}, got {}".format(self.n_neurons, input.size())
+
+    mu = input.mean(dim=0)
+    var = input.var(dim=0, unbiased=False)
+    x_hat = (input - mu) / torch.sqrt(var + self.eps)
+
+    out = torch.mul(self.gamma, x_hat) + self.beta
+
+    assert input.shape == out.shape, "input shape shouldn't change: {} -> {}".format(input.shape, out.shape)
 
     return out
 
@@ -93,11 +93,11 @@ class CustomBatchNormManualFunction(torch.autograd.Function):
     Compute the batch normalization
     
     Args:
-      ctx: context object handling storing and retrival of tensors and constants and specifying
+      ctx: context object handling storing and retrieval of tensors and constants and specifying
            whether tensors need gradients in backward pass
       input: input tensor of shape (n_batch, n_neurons)
       gamma: variance scaling tensor, applied per neuron, shpae (n_neurons)
-      beta: mean bias tensor, applied per neuron, shpae (n_neurons)
+      beta: mean bias tensor, applied per neuron, shape (n_neurons)
       eps: small float added to the variance for stability
     Returns:
       out: batch-normalized tensor
