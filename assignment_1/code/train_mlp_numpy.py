@@ -8,6 +8,7 @@ from __future__ import print_function
 
 import argparse
 import numpy as np
+import matplotlib.pyplot as plt
 import os
 from mlp_numpy import MLP
 from modules import CrossEntropyModule, LinearModule
@@ -68,7 +69,7 @@ def train():
     dnn_hidden_units = []
 
   # Load data
-  cifar10 = cifar10_utils.get_cifar10(data_dir='cifar10/cifar-10-batches-py', one_hot=True, validation_size=5000)
+  cifar10 = cifar10_utils.get_cifar10(data_dir=FLAGS.data_dir, one_hot=True, validation_size=5000)
   train_set = cifar10['train']
   test_set = cifar10['test']
   val_set = cifar10['validation']
@@ -80,14 +81,17 @@ def train():
   model = MLP(input_dim, dnn_hidden_units, n_classes)
   cross_entropy = CrossEntropyModule()
 
-  curr_epoch = 0
+  total_loss = 0
+  losses = []
+  val_acc = []
   train_acc = []
-  while train_set.epochs_completed <= FLAGS.max_steps:
+  for i in range(FLAGS.max_steps):
     x, y = train_set.next_batch(FLAGS.batch_size)
     x = x.reshape(FLAGS.batch_size, -1)
 
     out = model.forward(x)
     loss = cross_entropy.forward(out, y)
+    total_loss += loss
 
     train_acc.append(accuracy(out, y))
 
@@ -102,7 +106,7 @@ def train():
         module.params['bias'] = module.params['bias'] - FLAGS.learning_rate * module.grads['bias']
 
 
-    if train_set.epochs_completed > curr_epoch:
+    if i % FLAGS.eval_freq == 0 and i != 0:
 
       val_inputs = val_set.images.reshape(val_set.images.shape[0], -1)
 
@@ -111,17 +115,25 @@ def train():
 
       acc = accuracy(pred, targ)
 
+      losses.append(total_loss)
+      val_acc.append(acc)
+
       print()
       print("- - - - - - - - - -")
-      print('- EPOCH:\t\t\t', curr_epoch)
+      print('- STEPS:\t\t\t', i)
       print('- TRAIN ACC: \t\t\t', np.array(train_acc).mean())
       print('- VALIDATION ACC:\t\t', acc)
       print("- - - - - - - - - -")
 
       train_acc = []
-      curr_epoch = train_set.epochs_completed
+      total_loss = 0
 
-      if curr_epoch == 20: break
+  print("Loss over time: \t", losses)
+  print("Val acc over time: \t", val_acc)
+
+  save_plots('test.png', losses, val_acc)
+
+
 
 def print_flags():
   """
@@ -129,6 +141,28 @@ def print_flags():
   """
   for key, value in vars(FLAGS).items():
     print(key + ' : ' + str(value))
+
+def save_plots(filename, loss, acc):
+
+  examples = np.arange(len(loss)) * FLAGS.eval_freq * FLAGS.batch_size
+
+  fig, ax1 = plt.subplots()
+
+  color = 'tab:red'
+  ax1.set_xlabel('num examples')
+  ax1.set_ylabel('loss', color=color)
+  ax1.plot(examples, loss, color=color)
+  ax1.tick_params(axis='y', labelcolor=color)
+
+  ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+
+  color = 'tab:blue'
+  ax2.set_ylabel('val acc', color=color)  # we already handled the x-label with ax1
+  ax2.plot(examples, acc, color=color)
+  ax2.tick_params(axis='y', labelcolor=color)
+
+  fig.tight_layout()  # otherwise the right y-label is slightly clipped
+  plt.savefig(filename=filename)
 
 def main():
   """
