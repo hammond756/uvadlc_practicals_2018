@@ -82,7 +82,12 @@ def train():
   input_dim = train_set.images[0, :, :, :].size
   n_classes = train_set.labels.max() + 1
 
+  # set device
+  device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+
   model = MLP(input_dim, dnn_hidden_units, n_classes)
+  model = model.to(device)
+
   cross_entropy = nn.CrossEntropyLoss()
   optimizer = optim.SGD(model.parameters(),lr=FLAGS.learning_rate)
 
@@ -96,6 +101,7 @@ def train():
     # prepare batch
     x, y = train_set.next_batch(FLAGS.batch_size)
     x, y = torch.tensor(x), torch.tensor(y, dtype=torch.long)
+    x, y = x.to(device), y.to(device)
     x = x.view(FLAGS.batch_size, -1)
 
     # forward pass
@@ -114,10 +120,13 @@ def train():
     if i % FLAGS.eval_freq == 0 and i != 0:
 
       val_inputs = val_set.images
-      val_inputs = torch.tensor(val_inputs).view(val_set.images.shape[0], -1)
+      val_inputs = torch.tensor(val_inputs)
+      val_inputs = val_inputs.to(device)
+      val_inputs = val_inputs.view(val_set.images.shape[0], -1)
 
       pred = model(val_inputs)
       targ = torch.tensor(val_set.labels)
+      targ = targ.to(device)
 
       acc = accuracy(pred, targ)
 
