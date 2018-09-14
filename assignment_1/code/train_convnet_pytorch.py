@@ -11,6 +11,9 @@ import numpy as np
 import os
 from convnet_pytorch import ConvNet
 import cifar10_utils
+import torch
+nn = torch.nn
+optim = torch.optim
 
 # Default constants
 LEARNING_RATE_DEFAULT = 1e-4
@@ -42,13 +45,8 @@ def accuracy(predictions, targets):
   Implement accuracy computation.
   """
 
-  ########################
-  # PUT YOUR CODE HERE  #
-  #######################
-  raise NotImplementedError
-  ########################
-  # END OF YOUR CODE    #
-  #######################
+  accuracy = (predictions.argmax(dim=1) == targets).sum().item()
+  accuracy = accuracy / len(predictions)
 
   return accuracy
 
@@ -64,13 +62,80 @@ def train():
   # Set the random seeds for reproducibility
   np.random.seed(42)
 
-  ########################
-  # PUT YOUR CODE HERE  #
-  #######################
-  raise NotImplementedError
-  ########################
-  # END OF YOUR CODE    #
-  #######################
+  # Load data
+  cifar10 = cifar10_utils.get_cifar10(data_dir=FLAGS.data_dir, one_hot=False, validation_size=5000)
+  train_set = cifar10['train']
+  test_set = cifar10['test']
+  val_set = cifar10['validation']
+
+  # Initialize model
+  n_channels = len(train_set.images[0].shape)
+  n_classes = train_set.labels.max() + 1
+
+  # set device
+  device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+
+  model = ConvNet(n_channels, n_classes)
+  model = model.to(device)
+
+  cross_entropy = nn.CrossEntropyLoss()
+  optimizer = optim.SGD(model.parameters(),lr=FLAGS.learning_rate)
+
+  total_loss = 0
+  losses = []
+
+  val_acc = []
+  train_acc = []
+  for i in range(FLAGS.max_steps):
+
+    # prepare batch
+    x, y = train_set.next_batch(FLAGS.batch_size)
+    x, y = torch.tensor(x), torch.tensor(y, dtype=torch.long)
+    x, y = x.to(device), y.to(device)
+
+    # forward pass
+    out = model(x)
+    loss = cross_entropy(out, y)
+    total_loss += loss.item()
+
+    # keep track of training accuracy
+    train_acc.append(accuracy(out, y))
+
+    # backward pass
+    model.zero_grad()
+    loss.backward()
+    optimizer.step()
+
+    if i % FLAGS.eval_freq == 0 and i != 0:
+
+      val_inputs = val_set.images
+      val_inputs = torch.tensor(val_inputs)
+      val_inputs = val_inputs.to(device)
+
+      pred = model(val_inputs)
+      targ = torch.tensor(val_set.labels)
+      targ = targ.to(device)
+
+      acc = accuracy(pred, targ)
+
+      losses.append(total_loss)
+      val_acc.append(acc)
+
+      print()
+      print("- - - - - - - - - -")
+      print('- STEPS:\t\t\t', i)
+      print('- TRAIN ACC: \t\t\t', np.array(train_acc).mean())
+      print('- VALIDATION ACC:\t\t', acc)
+      print("- - - - - - - - - -")
+
+      train_acc = []
+      total_loss = 0
+
+  print("Loss over time: \t", losses)
+  print("Val acc over time: \t", val_acc)
+
+  # save_plots('test.png', losses, val_acc)
+
 
 def print_flags():
   """
