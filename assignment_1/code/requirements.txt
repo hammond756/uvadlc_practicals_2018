@@ -3,6 +3,6 @@ torchvision
 matplotlib
 numpy
 argparse
-pickle
+
 sklearn
 skorch

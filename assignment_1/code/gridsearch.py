@@ -6,7 +6,7 @@ import torch
 nn = torch.nn
 import skorch
 from sklearn.model_selection import GridSearchCV
-import pickle
+import dill 
 
 def main():
 
@@ -50,8 +50,8 @@ def main():
   print('Best score:\t', gs.best_score_)
   print()
 
-  with open('gridsearch_full_training_set.pickle', 'wb') as f:
-    pickle.dump(gs, f)
+  with open('gridsearch_full_training_set.dill', 'wb') as f:
+    dill.dump(gs, f)
 
 
 if __name__ == '__main__':
