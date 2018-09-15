@@ -85,7 +85,7 @@ def train():
   losses = []
   val_acc = []
   train_acc = []
-  for i in range(FLAGS.max_steps):
+  for i in range(FLAGS.max_steps + 1):
     x, y = train_set.next_batch(FLAGS.batch_size)
     x = x.reshape(FLAGS.batch_size, -1)
 

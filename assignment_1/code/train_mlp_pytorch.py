@@ -96,7 +96,7 @@ def train():
 
   val_acc = []
   train_acc = []
-  for i in range(FLAGS.max_steps):
+  for i in range(FLAGS.max_steps + 1):
 
     # prepare batch
     x, y = train_set.next_batch(FLAGS.batch_size)
