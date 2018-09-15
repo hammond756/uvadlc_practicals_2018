@@ -7,11 +7,13 @@ nn = torch.nn
 import skorch
 from sklearn.model_selection import GridSearchCV
 import dill 
+import os
 
 def main():
 
   # Load data
-  cifar10 = cifar10_utils.get_cifar10(one_hot=False, validation_size=0)
+  path_to_data = os.path.abspath('uva_deeplearning/assignment_1/code/cifar10/cifar-10-batches-py/')
+  cifar10 = cifar10_utils.get_cifar10(data_dir=path_to_data, one_hot=False, validation_size=0)
   train_set = cifar10['train']
 
   # Initialize model
