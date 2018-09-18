@@ -171,13 +171,15 @@ class SoftMaxModule(object):
     Implement backward pass of the module.
     """
 
-    dsoft = -np.einsum('ij,ik->ijk', self.S, self.S) # NxD * NxD -> NxDxD
-    diag = np.einsum('ij,ik->ijk', self.S, (1 - self.S)).diagonal(axis1=1, axis2=2) # -> NxD (diagonals)
 
-    diag_idx = np.arange(0, dout.shape[1])
+    # calculate components of jacobians
+    dsoft = -np.einsum('ij,ik->ijk', self.S, self.S) # NxD * NxD -> NxDxD
+    diag = np.multiply(self.S, (1 - self.S)) # -> NxD (diagonals)
+
+    # replace N diagonals wis s(1-s) for i=j
+    diag_idx = np.arange(dout.shape[1])
     dsoft[:, diag_idx, diag_idx] = diag
 
-    # dx = np.matmul(dout[:, None, :], dsoft).squeeze(1)
     dx = np.einsum('ik,ijk->ij', dout, dsoft)
 
     return dx
