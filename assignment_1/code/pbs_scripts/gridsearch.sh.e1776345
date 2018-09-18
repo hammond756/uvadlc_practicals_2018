@@ -1,0 +1,5 @@
+You are using pip version 9.0.1, however version 18.0 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+[Parallel(n_jobs=4)]: Done  33 tasks      | elapsed: 43.0min
+[Parallel(n_jobs=4)]: Done 154 tasks      | elapsed: 122.2min
+[Parallel(n_jobs=4)]: Done 180 out of 180 | elapsed: 130.0min finished

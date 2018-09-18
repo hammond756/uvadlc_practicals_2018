@@ -1,0 +1,10 @@
+You are using pip version 9.0.1, however version 18.0 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+Traceback (most recent call last):
+  File "/home/lgpu0034/uva_deeplearning/assignment_1/code/train_convnet_pytorch.py", line 200, in <module>
+    main()
+  File "/home/lgpu0034/uva_deeplearning/assignment_1/code/train_convnet_pytorch.py", line 183, in main
+    train()
+  File "/home/lgpu0034/uva_deeplearning/assignment_1/code/train_convnet_pytorch.py", line 140, in train
+    dill.dump({'train_loss' : losses, 'val_acc' : val_acc}, f)
+NameError: name 'dill' is not defined
