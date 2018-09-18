@@ -107,29 +107,29 @@ def train():
     optimizer.step()
 
     if i % FLAGS.eval_freq == 0 and i != 0:
+      with torch.no_grad():
+        val_inputs = val_set.images
+        val_inputs = torch.tensor(val_inputs)
+        val_inputs = val_inputs.to(device)
 
-      val_inputs = val_set.images
-      val_inputs = torch.tensor(val_inputs)
-      val_inputs = val_inputs.to(device)
+        pred = model(val_inputs)
+        targ = torch.tensor(val_set.labels)
+        targ = targ.to(device)
 
-      pred = model(val_inputs)
-      targ = torch.tensor(val_set.labels)
-      targ = targ.to(device)
+        acc = accuracy(pred, targ)
 
-      acc = accuracy(pred, targ)
+        losses.append(total_loss)
+        val_acc.append(acc)
 
-      losses.append(total_loss)
-      val_acc.append(acc)
+        print()
+        print("- - - - - - - - - -")
+        print('- STEPS:\t\t\t', i)
+        print('- TRAIN ACC: \t\t\t', np.array(train_acc).mean())
+        print('- VALIDATION ACC:\t\t', acc)
+        print("- - - - - - - - - -")
 
-      print()
-      print("- - - - - - - - - -")
-      print('- STEPS:\t\t\t', i)
-      print('- TRAIN ACC: \t\t\t', np.array(train_acc).mean())
-      print('- VALIDATION ACC:\t\t', acc)
-      print("- - - - - - - - - -")
-
-      train_acc = []
-      total_loss = 0
+        train_acc = []
+        total_loss = 0
 
   print("Loss over time: \t", losses)
   print("Val acc over time: \t", val_acc)
