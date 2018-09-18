@@ -69,7 +69,7 @@ def train():
     dnn_hidden_units = []
 
   # Load data
-  cifar10 = cifar10_utils.get_cifar10(data_dir=FLAGS.data_dir, one_hot=True, validation_size=5000)
+  cifar10 = cifar10_utils.get_cifar10(data_dir=FLAGS.data_dir, one_hot=True, validation_size=0)
   train_set = cifar10['train']
   test_set = cifar10['test']
   val_set = cifar10['validation']
@@ -108,14 +108,14 @@ def train():
 
     if i % FLAGS.eval_freq == 0 and i != 0:
 
-      val_inputs = val_set.images.reshape(val_set.images.shape[0], -1)
+      val_inputs = test_set.images.reshape(test_set.images.shape[0], -1)
 
       pred = model.forward(val_inputs)
-      targ = val_set.labels
+      targ = test_set.labels
 
       acc = accuracy(pred, targ)
 
-      losses.append(total_loss)
+      losses.append(total_loss / i)
       val_acc.append(acc)
 
       print()
@@ -157,7 +157,7 @@ def save_plots(filename, loss, acc):
   ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
 
   color = 'tab:blue'
-  ax2.set_ylabel('val acc', color=color)  # we already handled the x-label with ax1
+  ax2.set_ylabel('test acc', color=color)  # we already handled the x-label with ax1
   ax2.plot(examples, acc, color=color)
   ax2.tick_params(axis='y', labelcolor=color)
 

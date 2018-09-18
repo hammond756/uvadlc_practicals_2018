@@ -130,7 +130,7 @@ def train():
 
       acc = accuracy(pred, targ)
 
-      losses.append(total_loss)
+      losses.append(total_loss / i)
       val_acc.append(acc)
 
       print()
@@ -171,7 +171,7 @@ def save_plots(filename, loss, acc):
   ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
 
   color = 'tab:blue'
-  ax2.set_ylabel('val acc', color=color)  # we already handled the x-label with ax1
+  ax2.set_ylabel('train acc', color=color)  # we already handled the x-label with ax1
   ax2.plot(examples, acc, color=color)
   ax2.tick_params(axis='y', labelcolor=color)
 

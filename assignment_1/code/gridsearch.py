@@ -12,7 +12,7 @@ import os
 def main():
 
   # Load data
-  path_to_data = os.path.abspath('uva_deeplearning/assignment_1/code/cifar10/cifar-10-batches-py/')
+  path_to_data = os.path.abspath('cifar10/cifar-10-batches-py/')
   cifar10 = cifar10_utils.get_cifar10(data_dir=path_to_data, one_hot=False, validation_size=0)
   train_set = cifar10['train']
 
@@ -25,22 +25,23 @@ def main():
     criterion=nn.CrossEntropyLoss,
     module__n_inputs=input_dim,
     module__n_classes=n_classes,
-    optimizer=torch.optim.SGD
+    optimizer=torch.optim.Adam
   )
 
-  params = {
-    'lr' : [0.1, 0.01, 0.001],
-    'module__n_hidden' : [
-      [100, 100],
-      [1000],
-      [50,30,20]
-    ],
-    'batch_size' : [64, 128, 256, 512]
-  }
   # params = {
-  #   'lr' : [0.1, 0.01],
-  #   'module__n_hidden' : [[100]]
+  #   'lr' : [0.1, 0.01, 0.001],
+  #   'module__n_hidden' : [
+  #     [100, 100],
+  #     [1000],
+  #     [50,30,20]
+  #   ],
+  #   'batch_size' : [64, 128, 256, 512]
   # }
+  params = {
+    'lr' : [0.002],
+    'module__n_hidden' : [[500, 500, 500, 500]],
+    'optimizer' : [torch.optim.Adam]
+  }
 
   gs = GridSearchCV(net, params, cv=5, scoring='accuracy', n_jobs=4, refit=False, verbose=2)
   gs.fit(train_set.images.reshape(train_set.images.shape[0], -1), train_set.labels)

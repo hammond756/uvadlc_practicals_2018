@@ -167,43 +167,53 @@ class CustomBatchNormManualFunction(torch.autograd.Function):
 
     # shifting
     grad_gamma_x = grad_output
-    grad_beta = grad_output.sum(dim=0)
+
+    if ctx.needs_input_grad[2]:
+      grad_beta = grad_output.sum(dim=0)
+    else:
+      grad_beta = None
 
     # scaling
-    grad_gamma = torch.sum(torch.mul(grad_gamma_x, x_hat), dim=0)
-    grad_x_hat = torch.mul(grad_gamma_x, gamma)
+    if ctx.needs_input_grad[0] or ctx.needs_input_grad[1]:
+      grad_gamma = torch.sum(torch.mul(grad_gamma_x, x_hat), dim=0)
+    else:
+      grad_gamma = None
 
-    assert grad_x_hat.shape == (N,D)
+    if ctx.needs_input_grad[0]:
+      grad_x_hat = torch.mul(grad_gamma_x, gamma)
 
-    # normalization
-    grad_sig_inv = torch.sum(torch.mul(grad_x_hat, x_mu_diff), dim=0)
-    grad_x_mu_diff_1 = torch.mul(grad_x_hat, sig_inv)
+      assert grad_x_hat.shape == (N,D)
 
-    assert grad_x_mu_diff_1.shape == (N,D)
+      # normalization
+      grad_sig_inv = torch.sum(torch.mul(grad_x_hat, x_mu_diff), dim=0)
+      grad_x_mu_diff_1 = torch.mul(grad_x_hat, sig_inv)
 
-    # inverting standard deviation
-    grad_sig = torch.mul(-1 / sig.pow(2), grad_sig_inv)
+      assert grad_x_mu_diff_1.shape == (N,D)
 
-    assert grad_sig.shape == (D,)
+      # inverting standard deviation
+      grad_sig = torch.mul(-1 / sig.pow(2), grad_sig_inv)
 
-    # rooting the variance
-    grad_var = torch.mul((0.5 / sig), grad_sig) # sig = sqrt(var + eps)
+      assert grad_sig.shape == (D,)
 
-    # averaging the square differences
-    grad_pow2 = torch.mul(1 / N * torch.ones((N,D), dtype=torch.double), grad_var)
+      # rooting the variance
+      grad_var = torch.mul((0.5 / sig), grad_sig) # sig = sqrt(var + eps)
 
-    # sqaure-ing the difference
-    grad_x_mu_diff_2 = 2 * torch.mul(x_mu_diff, grad_pow2)
+      # averaging the square differences
+      grad_pow2 = torch.mul(1 / N * torch.ones((N,D), dtype=torch.double), grad_var)
 
-    # substracting the mean
-    grad_input_1 = grad_x_mu_diff_1 + grad_x_mu_diff_2
-    grad_mu = -1 * torch.sum((grad_x_mu_diff_1 + grad_x_mu_diff_2), dim=0)
+      # sqaure-ing the difference
+      grad_x_mu_diff_2 = 2 * torch.mul(x_mu_diff, grad_pow2)
 
-    # averaging the batch
-    grad_input_2 = torch.mul(1 / N * torch.ones((N,D), dtype=torch.double), grad_mu)
+      # substracting the mean
+      grad_input_1 = grad_x_mu_diff_1 + grad_x_mu_diff_2
+      grad_mu = -1 * torch.sum((grad_x_mu_diff_1 + grad_x_mu_diff_2), dim=0)
+      # averaging the batch
+      grad_input_2 = torch.mul(1 / N * torch.ones((N,D), dtype=torch.double), grad_mu)
 
-    # finally the input
-    grad_input = grad_input_1 + grad_input_2
+      # finally the input
+      grad_input = grad_input_1 + grad_input_2
+    else:
+      grad_input = None
 
     # return gradients of the three tensor inputs and None for the constant eps
     return grad_input, grad_gamma, grad_beta, None

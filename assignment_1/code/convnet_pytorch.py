@@ -48,7 +48,7 @@ class ConvNet(nn.Module):
       nn.AvgPool2d((1,1), stride=1, padding=0),
     )
 
-    self.fully_connected = nn.Linear(512, 10)
+    self.fully_connected = nn.Linear(512, n_classes)
 
   def forward(self, x):
     """
