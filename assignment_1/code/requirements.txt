@@ -6,3 +6,4 @@ argparse
 
 sklearn
 skorch
+dill

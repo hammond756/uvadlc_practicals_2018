@@ -13,6 +13,7 @@ from convnet_pytorch import ConvNet
 import cifar10_utils
 import torch
 import matplotlib.pyplot as plt
+import dill
 nn = torch.nn
 optim = torch.optim
 
@@ -136,7 +137,8 @@ def train():
   print("Loss over time: \t", losses)
   print("Val acc over time: \t", val_acc)
 
-  save_plots('cnn.png', losses, val_acc)
+  with open('cnn_data.dill', 'wb') as f:
+    dill.dump({'train_loss' : losses, 'val_acc' : val_acc}, f)
 
 
 def print_flags():
