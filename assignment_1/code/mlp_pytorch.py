@@ -48,7 +48,6 @@ class MLP(nn.Module):
 
       modules.append(nn.Linear(n_hidden[-1], n_classes))
 
-    modules.append(nn.Softmax(dim=1))
     self.net = nn.ModuleList(modules)
 
   def forward(self, x):
