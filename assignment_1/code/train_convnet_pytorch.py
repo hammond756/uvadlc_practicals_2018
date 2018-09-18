@@ -12,6 +12,7 @@ import os
 from convnet_pytorch import ConvNet
 import cifar10_utils
 import torch
+import matplotlib.pyplot as plt
 nn = torch.nn
 optim = torch.optim
 
@@ -135,7 +136,7 @@ def train():
   print("Loss over time: \t", losses)
   print("Val acc over time: \t", val_acc)
 
-  # save_plots('test.png', losses, val_acc)
+  save_plots('cnn.png', losses, val_acc)
 
 
 def print_flags():
@@ -144,6 +145,28 @@ def print_flags():
   """
   for key, value in vars(FLAGS).items():
     print(key + ' : ' + str(value))
+
+def save_plots(filename, loss, acc):
+
+  examples = np.arange(len(loss)) * FLAGS.eval_freq * FLAGS.batch_size
+
+  fig, ax1 = plt.subplots()
+
+  color = 'tab:red'
+  ax1.set_xlabel('num examples')
+  ax1.set_ylabel('loss', color=color)
+  ax1.plot(examples, loss, color=color)
+  ax1.tick_params(axis='y', labelcolor=color)
+
+  ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+
+  color = 'tab:blue'
+  ax2.set_ylabel('test acc', color=color)  # we already handled the x-label with ax1
+  ax2.plot(examples, acc, color=color)
+  ax2.tick_params(axis='y', labelcolor=color)
+
+  fig.tight_layout()  # otherwise the right y-label is slightly clipped
+  plt.savefig(filename=filename)
 
 def main():
   """
