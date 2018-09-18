@@ -73,7 +73,7 @@ def train():
     dnn_hidden_units = []
 
   # Load data
-  cifar10 = cifar10_utils.get_cifar10(data_dir=FLAGS.data_dir, one_hot=False, validation_size=5000)
+  cifar10 = cifar10_utils.get_cifar10(data_dir=FLAGS.data_dir, one_hot=False, validation_size=0)
   train_set = cifar10['train']
   test_set = cifar10['test']
   val_set = cifar10['validation']
@@ -89,7 +89,7 @@ def train():
   model = model.to(device)
 
   cross_entropy = nn.CrossEntropyLoss()
-  optimizer = optim.SGD(model.parameters(),lr=FLAGS.learning_rate)
+  optimizer = optim.Adam(model.parameters(),lr=FLAGS.learning_rate, weight_decay=0.002)
 
   total_loss = 0
   losses = []
@@ -119,13 +119,13 @@ def train():
 
     if i % FLAGS.eval_freq == 0 and i != 0:
 
-      val_inputs = val_set.images
+      val_inputs = test_set.images
       val_inputs = torch.tensor(val_inputs)
       val_inputs = val_inputs.to(device)
-      val_inputs = val_inputs.view(val_set.images.shape[0], -1)
+      val_inputs = val_inputs.view(val_inputs.shape[0], -1)
 
       pred = model(val_inputs)
-      targ = torch.tensor(val_set.labels)
+      targ = torch.tensor(test_set.labels)
       targ = targ.to(device)
 
       acc = accuracy(pred, targ)
