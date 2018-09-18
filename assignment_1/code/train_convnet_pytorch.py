@@ -73,13 +73,14 @@ def train():
   n_classes = train_set.labels.max() + 1
 
   # set device
-  device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+  device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
   model = ConvNet(n_channels, n_classes)
   model = model.to(device)
+  model = nn.DataParallel(model)
 
   cross_entropy = nn.CrossEntropyLoss()
-  optimizer = optim.SGD(model.parameters(),lr=FLAGS.learning_rate)
+  optimizer = optim.Adam(model.parameters(),lr=FLAGS.learning_rate)
 
   total_loss = 0
   losses = []
@@ -108,12 +109,12 @@ def train():
 
     if i % FLAGS.eval_freq == 0 and i != 0:
       with torch.no_grad():
-        val_inputs = val_set.images
+        val_inputs = test_set.images
         val_inputs = torch.tensor(val_inputs)
         val_inputs = val_inputs.to(device)
 
         pred = model(val_inputs)
-        targ = torch.tensor(val_set.labels)
+        targ = torch.tensor(test_set.labels)
         targ = targ.to(device)
 
         acc = accuracy(pred, targ)
