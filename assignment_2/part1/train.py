@@ -55,7 +55,11 @@ def train(config):
                            num_classes=config.num_classes,
                            batch_size=config.batch_size)
     elif config.model_type == 'LSTM':
-        raise NotImplementedError()
+        model = LSTM(seq_length=config.input_length,
+                           input_dim=config.input_dim,
+                           num_hidden=config.num_hidden,
+                           num_classes=config.num_classes,
+                           batch_size=config.batch_size)
 
     # Initialize the dataset and data loader (note the +1)
     dataset = PalindromeDataset(config.input_length+1)
