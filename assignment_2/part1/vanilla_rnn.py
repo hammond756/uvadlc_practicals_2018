@@ -44,7 +44,6 @@ class VanillaRNN(nn.Module):
         self.seq_length = seq_length
         self.num_hidden = num_hidden
         self.batch_size = batch_size
-        self.num_classes = num_classes
         self.input_dim = input_dim
 
     def forward(self, x):
