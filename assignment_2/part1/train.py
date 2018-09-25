@@ -24,6 +24,8 @@ from datetime import datetime
 import numpy as np
 
 import torch
+nn = torch.nn
+optim = torch.optim
 from torch.utils.data import DataLoader
 
 from part1.dataset import PalindromeDataset
@@ -35,6 +37,9 @@ from part1.lstm import LSTM
 
 ################################################################################
 
+def get_predictions(outputs):
+    return torch.argmax(nn.functional.softmax(outputs, dim=1), dim=1)
+
 def train(config):
 
     assert config.model_type in ('RNN', 'LSTM')
@@ -43,33 +48,45 @@ def train(config):
     device = torch.device(config.device)
 
     # Initialize the model that we are going to use
-    model = None  # fixme
+    if config.model_type == 'RNN':
+        model = VanillaRNN(seq_length=config.input_length,
+                           input_dim=config.input_dim,
+                           num_hidden=config.num_hidden,
+                           num_classes=config.num_classes,
+                           batch_size=config.batch_size)
+    elif config.model_type == 'LSTM':
+        raise NotImplementedError()
 
     # Initialize the dataset and data loader (note the +1)
     dataset = PalindromeDataset(config.input_length+1)
     data_loader = DataLoader(dataset, config.batch_size, num_workers=1)
 
     # Setup the loss and optimizer
-    criterion = None  # fixme
-    optimizer = None  # fixme
+    criterion = nn.CrossEntropyLoss()
+    optimizer = optim.RMSprop(model.parameters(), lr=config.learning_rate)
 
     for step, (batch_inputs, batch_targets) in enumerate(data_loader):
 
         # Only for time measurement of step through network
         t1 = time.time()
 
-        # Add more code here ...
+        p = model(batch_inputs)
+
+        loss = criterion(p, batch_targets)
+        predictions = get_predictions(p)
+        accuracy = (predictions == batch_targets).sum().item() / len(predictions)
+
+        # backward pass
+        model.zero_grad()
+        loss.backward()
 
         ############################################################################
         # QUESTION: what happens here and why?
         ############################################################################
-        torch.nn.utils.clip_grad_norm(model.parameters(), max_norm=config.max_norm)
+        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=config.max_norm)
         ############################################################################
 
-        # Add more code here ...
-
-        loss = np.inf   # fixme
-        accuracy = 0.0  # fixme
+        optimizer.step()
 
         # Just for time measurement
         t2 = time.time()

@@ -20,6 +20,7 @@ from __future__ import print_function
 
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 
 ################################################################################
 
@@ -27,8 +28,40 @@ class VanillaRNN(nn.Module):
 
     def __init__(self, seq_length, input_dim, num_hidden, num_classes, batch_size, device='cpu'):
         super(VanillaRNN, self).__init__()
-        # Initialization here ...
+
+        # Initial distribution of weights
+        mean = 0.0
+        std = 0.001
+
+        # Initialize parameters
+        self.Wxh = nn.Parameter(nn.init.normal_(torch.empty(input_dim, num_hidden), mean=mean, std=std))
+        self.Whh = nn.Parameter(nn.init.normal_(torch.empty(num_hidden, num_hidden), mean=mean, std=std))
+        self.bh = nn.Parameter(torch.zeros(num_hidden))
+        self.Whp = nn.Parameter(nn.init.normal_(torch.empty(num_hidden, num_classes), mean=mean, std=std))
+        self.bp = nn.Parameter(torch.zeros(num_classes))
+
+        # Save meta information
+        self.seq_length = seq_length
+        self.num_hidden = num_hidden
+        self.batch_size = batch_size
+        self.num_classes = num_classes
+        self.input_dim = input_dim
 
     def forward(self, x):
-        # Implementation here ...
-        pass
+
+        self.h = torch.zeros(self.batch_size, self.num_hidden)
+
+        for t in range(self.seq_length):
+
+            # convert input at time (t) to one-hot vector. only makes sense
+            # of input_dim == num_classes
+            x_t_emb = x[:, t].view(-1, 1).type(torch.long)
+            x_t = torch.zeros(self.batch_size, self.input_dim)
+            x_t.scatter_(1, x_t_emb, 1)
+
+            # compute hidden state
+            self.h = torch.mm(x_t, self.Wxh) + torch.mm(self.h, self.Whh) + self.bh
+            self.h = torch.tanh(self.h)
+
+
+        return torch.mm(self.h, self.Whp) + self.bp
