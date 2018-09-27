@@ -26,6 +26,7 @@ import numpy as np
 
 import torch
 import torch.optim as optim
+import torch.nn as nn
 from torch.utils.data import DataLoader
 
 from part3.dataset import TextDataset
@@ -38,25 +39,38 @@ def train(config):
     # Initialize the device which to run the model on
     device = torch.device(config.device)
 
-    # Initialize the model that we are going to use
-    model = TextGenerationModel( ... )  # fixme
 
     # Initialize the dataset and data loader (note the +1)
-    dataset = TextDataset( ... )  # fixme
+    dataset = TextDataset(config.txt_file, config.seq_length)
     data_loader = DataLoader(dataset, config.batch_size, num_workers=1)
 
+    # Initialize the model that we are going to use
+    model = TextGenerationModel(batch_size=config.batch_size,
+                                seq_length=config.seq_length,
+                                vocabulary_size=dataset.vocab_size,
+                                lstm_num_hidden=config.lstm_num_hidden,
+                                lstm_num_layers=config.lstm_num_layers,
+                                device=device)
+
     # Setup the loss and optimizer
-    criterion = None  # fixme
-    optimizer = None  # fixme
+    criterion = nn.CrossEntropyLoss()
+    optimizer = optim.RMSprop(model.parameters(), lr=config.learning_rate)
+
+    # TODO: configure learning rate scheduler
 
     for step, (batch_inputs, batch_targets) in enumerate(data_loader):
 
         # Only for time measurement of step through network
         t1 = time.time()
 
-        #######################################################
-        # Add more code here ...
-        #######################################################
+        print("X", x.shape)
+
+        outputs = model(batch_inputs)
+
+        print("Outputs", outputs.shape)
+
+
+        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=config.max_norm)
 
         loss = np.inf   # fixme
         accuracy = 0.0  # fixme

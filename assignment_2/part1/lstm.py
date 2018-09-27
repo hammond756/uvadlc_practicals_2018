@@ -30,26 +30,29 @@ class LSTM(nn.Module):
 
         # Initial distribution weights
         mean = 0.0
-        std = 0.001
+        std = 0.01
 
         # Helper variable
         concat_len = input_dim + num_hidden
 
         # Initialize linear operators
-        self.W_f = nn.Parameter(nn.init.normal_(torch.empty(concat_len, num_hidden), mean=mean, std=std))
-        self.b_f = nn.Parameter(torch.zeros(num_hidden))
+        self.W_xg = nn.Parameter(nn.init.normal_(torch.empty(input_dim, num_hidden), mean=mean, std=std))
+        self.W_hg = nn.Parameter(nn.init.normal_(torch.empty(num_hidden, num_hidden), mean=mean, std=std))
+        self.b_g = nn.Parameter(torch.zeros(num_hidden))
 
-        self.W_i = nn.Parameter(nn.init.normal_(torch.empty(concat_len, num_hidden), mean=mean, std=std))
+        self.W_xi = nn.Parameter(nn.init.normal_(torch.empty(input_dim, num_hidden), mean=mean, std=std))
+        self.W_hi = nn.Parameter(nn.init.normal_(torch.empty(num_hidden, num_hidden), mean=mean, std=std))
         self.b_i = nn.Parameter(torch.zeros(num_hidden))
 
-        self.W_C = nn.Parameter(nn.init.normal_(torch.empty(concat_len, num_hidden), mean=mean, std=std))
-        self.b_C = nn.Parameter(torch.zeros(num_hidden))
+        self.W_xf = nn.Parameter(nn.init.normal_(torch.empty(input_dim, num_hidden), mean=mean, std=std))
+        self.W_hf = nn.Parameter(nn.init.normal_(torch.empty(num_hidden, num_hidden), mean=mean, std=std))
+        self.b_f = nn.Parameter(torch.zeros(num_hidden))
 
-        self.W_o = nn.Parameter(nn.init.normal_(torch.empty(concat_len, num_hidden), mean=mean, std=std))
-        self.b_o = nn.Parameter(torch.zeros(num_classes))
+        self.W_xo = nn.Parameter(nn.init.normal_(torch.empty(input_dim, num_hidden), mean=mean, std=std))
+        self.W_ho = nn.Parameter(nn.init.normal_(torch.empty(num_hidden, num_hidden), mean=mean, std=std))
+        self.b_o = nn.Parameter(torch.zeros(num_hidden))
 
-        # Added this myself to map h to num_classes
-        self.W_p = nn.Parameter(nn.init.normal_(torch.empty(num_hidden, num_classes), mean=mean, std=std))
+        self.W_hp = nn.Parameter(nn.init.normal_(torch.empty(num_hidden, num_classes), mean=mean, std=std))
         self.b_p = nn.Parameter(torch.zeros(num_classes))
 
         # Save meta information
@@ -62,34 +65,30 @@ class LSTM(nn.Module):
     def forward(self, x):
 
         # initialize cell state
-        C = torch.zeros(self.batch_size, self.num_hidden)
+        c = torch.zeros(self.batch_size, self.num_hidden)
         h = torch.zeros(self.batch_size, self.num_hidden)
 
         for t in range(self.seq_length):
             x_t = x[:,t].view(self.batch_size, self.input_dim)
 
-            concat = torch.cat([h, x_t], dim=1)
-
-            # forget gate
-            f = torch.mm(concat, self.W_f) + self.b_f
-            f = torch.sigmoid(f)
+            # modulation gate
+            g = torch.mm(x_t, self.W_xg) + torch.mm(h, self.W_hg) + self.b_g
+            g = torch.tanh(g)
 
             # input gate
-            i = torch.mm(concat, self.W_i) + self.b_i
+            i = torch.mm(x_t, self.W_xi) + torch.mm(h, self.W_hi) + self.b_i
             i = torch.sigmoid(i)
 
-            # candidate cell state
-            C_ = torch.mm(concat, self.W_C) + self.b_C
-            C_ = torch.tanh(C_)
-
-            # compute new cell state
-            C = torch.mul(f, C) + torch.mul(i, C_)
+            # forget gate
+            f = torch.mm(x_t, self.W_xf) + torch.mm(h, self.W_hf) + self.b_f
+            f = torch.sigmoid(f)
 
             # output gate
-            o = torch.mm(concat, self.W_o)
+            o = torch.mm(x_t, self.W_xo) + torch.mm(h, self.W_ho) + self.b_o
             o = torch.sigmoid(o)
 
-            # sort term memory
-            h = torch.mul(o, torch.tanh(C))
+            # new cell state
+            c = torch.mul(g, i) + torch.mul(c, f)
+            h = torch.mul(torch.tanh(c), o)
 
-        return torch.mm(h, self.W_p) + self.b_p
+        return torch.mm(h, self.W_hp) + self.b_p
