@@ -1,0 +1,5 @@
+[2018-09-27 17:39] Train Step 0200/1000000, Batch Size = 64,Accuracy = 0.35, Loss = 2.201
+lniis zooar heg euruigde pin dd
+
+--------
+

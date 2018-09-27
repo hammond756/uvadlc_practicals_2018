@@ -28,17 +28,73 @@ import torch
 import torch.optim as optim
 import torch.nn as nn
 from torch.utils.data import DataLoader
+from functools import reduce
 
 from part3.dataset import TextDataset
 from part3.model import TextGenerationModel
 
 ################################################################################
 
+def one_hot(batch, vocab_size):
+
+    X = torch.zeros(batch.shape[0], batch.shape[1], vocab_size)
+    X.scatter_(2, batch[:,:,None], 1)
+
+    return X
+
+def sample_output(output, temperature=1.0):
+    # helper function to sample an index from a probability array
+
+    output = torch.softmax(output, dim=1)
+
+    a = torch.log(output) / temperature
+    a = torch.exp(a) / (torch.exp(a).sum())
+
+    sample = torch.multinomial(a, 1)
+
+    return sample
+
+# def sample_output(output, temperature=None):
+#     print("output", output.shape)
+#     return torch.softmax(output, dim=0).argmax(dim=1, keepdim=True)
+
+
+def sample_model(model, vocab_size, device='cpu', temp=1.0, hidden_states=None, n=30, prev_char=None):
+
+    if n == 0:
+        return prev_char
+
+    # initialize sequence with random character
+    if prev_char is None:
+        # random character seed
+        prev_char = torch.empty(1, 1).random_(0, vocab_size - 1).type(torch.long)
+        # convert to one-hot
+        prev_char = one_hot(prev_char, vocab_size).to(device)
+
+    output, (h,c) = model(prev_char, hidden_states)
+    output = output[:, -1, :] # last prediction
+
+    # Sample next character from softmax
+    next_char = sample_output(output, temperature=temp)  # [B,1]
+    next_char = one_hot(next_char, vocab_size)           # [B,1,D]
+
+    # concat the recursive predictions to currect character
+    future = sample_model(model, vocab_size, temp=temp, hidden_states=(h,c), n=n-1, prev_char=next_char)
+    encoded_text = torch.cat([next_char, future], dim=1)
+
+    return encoded_text
+
+def string_from_one_hot(sequence, dataset):
+    char_idxs = sequence.argmax(dim=2).squeeze_(0).numpy()
+    return dataset.convert_to_string(char_idxs)
+
+def get_predictions(outputs):
+    return torch.argmax(nn.functional.softmax(outputs, dim=2), dim=2)
+
 def train(config):
 
     # Initialize the device which to run the model on
-    device = torch.device(config.device)
-
+    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
     # Initialize the dataset and data loader (note the +1)
     dataset = TextDataset(config.txt_file, config.seq_length)
@@ -63,17 +119,26 @@ def train(config):
         # Only for time measurement of step through network
         t1 = time.time()
 
-        print("X", x.shape)
+        X = torch.stack(batch_inputs, dim=1)
+        X = one_hot(X, dataset.vocab_size)
+        Y = torch.stack(batch_targets, dim=1)
+        X, Y = X.to(device), Y.to(device)
 
-        outputs = model(batch_inputs)
+        # forward pass
+        outputs, _ = model(X)
 
-        print("Outputs", outputs.shape)
+        # compute training metrics
+        loss = criterion(outputs.transpose(2, 1), Y)
+        predictions = get_predictions(outputs)
+        accuracy = (Y == predictions).sum().item() / reduce(lambda x,y: x*y, Y.size())
 
+        # backward pass
+        model.zero_grad()
+        loss.backward()
+        optimizer.step()
 
+        # clip gradients to prevent them form exploding
         torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=config.max_norm)
-
-        loss = np.inf   # fixme
-        accuracy = 0.0  # fixme
 
         # Just for time measurement
         t2 = time.time()
@@ -88,14 +153,34 @@ def train(config):
                     accuracy, loss
             ))
 
-        if step == config.sample_every:
+        if step % config.sample_every == 0:
             # Generate some sentences by sampling from the model
-            pass
+            path = os.path.splitext(config.txt_file)[0] + "_generated_samples.txt"
 
-        if step == config.train_steps:
-            # If you receive a PyTorch data-loader error, check this bug report:
-            # https://github.com/pytorch/pytorch/pull/9655
-            break
+            print("---")
+            print("Write sample to ", path)
+            print("---")
+
+            with open(path, 'w') as f:
+                progress = "[{}] Train Step {:04d}/{:04d}, Batch Size = {}," \
+                       "Accuracy = {:.2f}, Loss = {:.3f}".format(
+                    datetime.now().strftime("%Y-%m-%d %H:%M"), step,
+                    config.train_steps, config.batch_size, accuracy, loss)
+
+                generated_sequence = sample_model(model, dataset.vocab_size, device=device, temp=config.temperature, n=config.generate_n)
+                sample = string_from_one_hot(generated_sequence, dataset)
+
+                f.write(progress + '\n\n')
+                f.write(sample)
+                f.write('\n\n--------\n\n\n')
+
+        try:
+            if step == config.train_steps:
+                # If you receive a PyTorch data-loader error, check this bug report:
+                # https://github.com/pytorch/pytorch/pull/9655
+                break
+        except:
+            pass
 
     print('Done training.')
 
@@ -123,13 +208,15 @@ if __name__ == "__main__":
     parser.add_argument('--learning_rate_step', type=int, default=5000, help='Learning rate step')
     parser.add_argument('--dropout_keep_prob', type=float, default=1.0, help='Dropout keep probability')
 
-    parser.add_argument('--train_steps', type=int, default=1e6, help='Number of training steps')
+    parser.add_argument('--train_steps', type=int, default=int(1e6), help='Number of training steps')
     parser.add_argument('--max_norm', type=float, default=5.0, help='--')
 
     # Misc params
     parser.add_argument('--summary_path', type=str, default="./summaries/", help='Output path for summaries')
     parser.add_argument('--print_every', type=int, default=5, help='How often to print training progress')
     parser.add_argument('--sample_every', type=int, default=100, help='How often to sample from the model')
+    parser.add_argument('--temperature', type=float, default=1.0, help='Energy of the probability distribution')
+    parser.add_argument('--generate_n', type=int, default=30, help='Length of string to generate')
 
     config = parser.parse_args()
 

@@ -24,10 +24,9 @@ import torch
 class TextGenerationModel(nn.Module):
 
     def __init__(self, batch_size, seq_length, vocabulary_size,
-                 lstm_num_hidden=256, lstm_num_layers=2, device='cuda:0'):
+                 lstm_num_hidden=256, lstm_num_layers=2, device='cpu'):
 
         super(TextGenerationModel, self).__init__()
-
 
         # Initialize modules
         self.lstm = nn.LSTM(input_size=vocabulary_size,
@@ -35,21 +34,19 @@ class TextGenerationModel(nn.Module):
                             num_layers=lstm_num_layers,
                             batch_first=True)
 
+        # Learnt mapping from hidden state to num_classes
+        self.out_projection = nn.Linear(lstm_num_hidden, vocabulary_size)
+
         # Save meta information
-        self.batch_size = batch_size
-        self.seq_length = seq_length
-        self.vocabulary_size = vocabulary_size
         self.num_layers = lstm_num_layers
         self.num_hidden = lstm_num_hidden
 
-    def forward(self, x):
+        self.to(device)
 
-        if self.lstm.batch_first:
-            assert x.shape == (self.batch_size, self.seq_length, self.vocabulary_size)
-        else:
-            assert x.shape == (self.seq_length, self.batch_size, self.vocabulary_size)
+    def forward(self, x, hidden_states=None):
 
-        h_0 = torch.zeros(self.num_layers, self.batch_size, self.num_hidden)
-        c_0 = torch.zeros(self.num_layers, self.batch_size, self.num_hidden)
+        # output is [B,S,directions*num_hidden], should bet [B,S,vocabulary_size]
+        out, (h,c) = self.lstm(x, hidden_states)
+        out = self.out_projection(out)
 
-        return self.lstm(x, (h_0, c_0))
+        return out, (h,c)
