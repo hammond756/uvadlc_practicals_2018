@@ -34,13 +34,14 @@ class CustomBatchNormAutograd(nn.Module):
     """
     super(CustomBatchNormAutograd, self).__init__()
 
-    ########################
-    # PUT YOUR CODE HERE  #
-    #######################
-    raise NotImplementedError
-    ########################
-    # END OF YOUR CODE    #
-    #######################
+    self.n_neurons = n_neurons
+    self.eps = eps
+
+    self.gamma = nn.Parameter(torch.ones((n_neurons,)))
+    self.beta = nn.Parameter(torch.zeros((n_neurons,)))
+
+    # self.gamma = nn.Parameter(torch.Tensor((n_neurons,)))
+    # self.beta = nn.Parameter(torch.Tensor((n_neurons,)))
 
   def forward(self, input):
     """
@@ -57,13 +58,15 @@ class CustomBatchNormAutograd(nn.Module):
       For the case that you make use of torch.var be aware that the flag unbiased=False should be set.
     """
 
-    ########################
-    # PUT YOUR CODE HERE  #
-    #######################
-    raise NotImplementedError
-    ########################
-    # END OF YOUR CODE    #
-    #######################
+    assert input.shape[1] == self.n_neurons, "input should be of size {}, got {}".format(self.n_neurons, input.size())
+
+    mu = input.mean(dim=0)
+    var = input.var(dim=0, unbiased=False)
+    x_hat = (input - mu) / torch.sqrt(var + self.eps)
+
+    out = torch.mul(self.gamma, x_hat) + self.beta
+
+    assert input.shape == out.shape, "input shape shouldn't change: {} -> {}".format(input.shape, out.shape)
 
     return out
 
@@ -93,11 +96,11 @@ class CustomBatchNormManualFunction(torch.autograd.Function):
     Compute the batch normalization
     
     Args:
-      ctx: context object handling storing and retrival of tensors and constants and specifying
+      ctx: context object handling storing and retrieval of tensors and constants and specifying
            whether tensors need gradients in backward pass
       input: input tensor of shape (n_batch, n_neurons)
       gamma: variance scaling tensor, applied per neuron, shpae (n_neurons)
-      beta: mean bias tensor, applied per neuron, shpae (n_neurons)
+      beta: mean bias tensor, applied per neuron, shape (n_neurons)
       eps: small float added to the variance for stability
     Returns:
       out: batch-normalized tensor
@@ -111,13 +114,32 @@ class CustomBatchNormManualFunction(torch.autograd.Function):
       For the case that you make use of torch.var be aware that the flag unbiased=False should be set.
     """
 
-    ########################
-    # PUT YOUR CODE HERE  #
-    #######################
-    raise NotImplementedError
-    ########################
-    # END OF YOUR CODE    #
-    #######################
+
+    ctx.eps = eps
+
+    # calculate numerator
+    x = input
+    mu = x.mean(dim=0)
+    x_mu_diff = x - mu
+
+    # calculate denomenator
+    square_diff = x_mu_diff.pow(2)
+    var = square_diff.mean(dim=0)
+    sig = torch.sqrt(var + eps)
+    sig_inv = 1 / sig
+
+    # put them together
+    x_hat = torch.mul(x_mu_diff, sig_inv)
+
+    # scale
+    scaled = torch.mul(gamma, x_hat)
+
+    # shift
+    shifted = scaled + beta
+
+    out = shifted
+
+    ctx.save_for_backward(gamma, mu, x_mu_diff, var, sig, sig_inv, x_hat)
 
     return out
 
@@ -139,13 +161,59 @@ class CustomBatchNormManualFunction(torch.autograd.Function):
       inputs to None. This should be decided dynamically.
     """
 
-    ########################
-    # PUT YOUR CODE HERE  #
-    #######################
-    raise NotImplementedError
-    ########################
-    # END OF YOUR CODE    #
-    #######################
+    N, D = grad_output.shape
+
+    gamma, mu, x_mu_diff, var, sig, sig_inv, x_hat = ctx.saved_tensors
+
+    # shifting
+    grad_gamma_x = grad_output
+
+    if ctx.needs_input_grad[2]:
+      grad_beta = grad_output.sum(dim=0)
+    else:
+      grad_beta = None
+
+    # scaling
+    if ctx.needs_input_grad[0] or ctx.needs_input_grad[1]:
+      grad_gamma = torch.sum(torch.mul(grad_gamma_x, x_hat), dim=0)
+    else:
+      grad_gamma = None
+
+    if ctx.needs_input_grad[0]:
+      grad_x_hat = torch.mul(grad_gamma_x, gamma)
+
+      assert grad_x_hat.shape == (N,D)
+
+      # normalization
+      grad_sig_inv = torch.sum(torch.mul(grad_x_hat, x_mu_diff), dim=0)
+      grad_x_mu_diff_1 = torch.mul(grad_x_hat, sig_inv)
+
+      assert grad_x_mu_diff_1.shape == (N,D)
+
+      # inverting standard deviation
+      grad_sig = torch.mul(-1 / sig.pow(2), grad_sig_inv)
+
+      assert grad_sig.shape == (D,)
+
+      # rooting the variance
+      grad_var = torch.mul((0.5 / sig), grad_sig) # sig = sqrt(var + eps)
+
+      # averaging the square differences
+      grad_pow2 = torch.mul(1 / N * torch.ones((N,D), dtype=torch.double), grad_var)
+
+      # sqaure-ing the difference
+      grad_x_mu_diff_2 = 2 * torch.mul(x_mu_diff, grad_pow2)
+
+      # substracting the mean
+      grad_input_1 = grad_x_mu_diff_1 + grad_x_mu_diff_2
+      grad_mu = -1 * torch.sum((grad_x_mu_diff_1 + grad_x_mu_diff_2), dim=0)
+      # averaging the batch
+      grad_input_2 = torch.mul(1 / N * torch.ones((N,D), dtype=torch.double), grad_mu)
+
+      # finally the input
+      grad_input = grad_input_1 + grad_input_2
+    else:
+      grad_input = None
 
     # return gradients of the three tensor inputs and None for the constant eps
     return grad_input, grad_gamma, grad_beta, None
@@ -177,13 +245,11 @@ class CustomBatchNormManualModule(nn.Module):
     """
     super(CustomBatchNormManualModule, self).__init__()
 
-    ########################
-    # PUT YOUR CODE HERE  #
-    #######################
-    raise NotImplementedError
-    ########################
-    # END OF YOUR CODE    #
-    #######################
+    self.n_neurons = n_neurons
+    self.eps = eps
+
+    self.gamma = nn.Parameter(torch.ones((n_neurons,)))
+    self.beta = nn.Parameter(torch.zeros((n_neurons,)))
 
   def forward(self, input):
     """
@@ -200,12 +266,9 @@ class CustomBatchNormManualModule(nn.Module):
       Call it via its .apply() method.
     """
 
-    ########################
-    # PUT YOUR CODE HERE  #
-    #######################
-    raise NotImplementedError
-    ########################
-    # END OF YOUR CODE    #
-    #######################
+    assert input.shape[1] == self.n_neurons
+
+    bn_func = CustomBatchNormManualFunction(self.n_neurons)
+    out = bn_func.apply(input, self.gamma, self.beta)
 
     return out

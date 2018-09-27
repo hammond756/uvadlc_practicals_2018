@@ -1,0 +1,24 @@
+You are using pip version 9.0.1, however version 18.0 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+Traceback (most recent call last):
+  File "/home/lgpu0034/uva_deeplearning/assignment_1/code/train_convnet_pytorch.py", line 175, in <module>
+    main()
+  File "/home/lgpu0034/uva_deeplearning/assignment_1/code/train_convnet_pytorch.py", line 158, in main
+    train()
+  File "/home/lgpu0034/uva_deeplearning/assignment_1/code/train_convnet_pytorch.py", line 115, in train
+    pred = model(val_inputs)
+  File "/home/lgpu0034/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 477, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/lgpu0034/uva_deeplearning/assignment_1/code/convnet_pytorch.py", line 71, in forward
+    features = self.convolutional_layers(x)
+  File "/home/lgpu0034/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 477, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/lgpu0034/.local/lib/python3.6/site-packages/torch/nn/modules/container.py", line 91, in forward
+    input = module(input)
+  File "/home/lgpu0034/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 477, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/lgpu0034/.local/lib/python3.6/site-packages/torch/nn/modules/activation.py", line 46, in forward
+    return F.threshold(input, self.threshold, self.value, self.inplace)
+  File "/home/lgpu0034/.local/lib/python3.6/site-packages/torch/nn/functional.py", line 625, in threshold
+    return torch._C._nn.threshold(input, threshold, value)
+RuntimeError: CUDA error: out of memory

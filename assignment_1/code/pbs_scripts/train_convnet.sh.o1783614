@@ -1,0 +1,105 @@
+Requirement already satisfied: torch in ./.local/lib/python3.6/site-packages (from -r /home/lgpu0034/uva_deeplearning/assignment_1/code/requirements.txt (line 1))
+Requirement already satisfied: torchvision in ./.local/lib/python3.6/site-packages (from -r /home/lgpu0034/uva_deeplearning/assignment_1/code/requirements.txt (line 2))
+Requirement already satisfied: matplotlib in ./.local/lib/python3.6/site-packages (from -r /home/lgpu0034/uva_deeplearning/assignment_1/code/requirements.txt (line 3))
+Requirement already satisfied: numpy in /sara/eb/Debian9/Python/3.6.3-foss-2017b/lib/python3.6/site-packages/numpy-1.13.3-py3.6-linux-x86_64.egg (from -r /home/lgpu0034/uva_deeplearning/assignment_1/code/requirements.txt (line 4))
+Requirement already satisfied: argparse in ./.local/lib/python3.6/site-packages (from -r /home/lgpu0034/uva_deeplearning/assignment_1/code/requirements.txt (line 5))
+Requirement already satisfied: sklearn in ./.local/lib/python3.6/site-packages (from -r /home/lgpu0034/uva_deeplearning/assignment_1/code/requirements.txt (line 7))
+Requirement already satisfied: skorch in ./.local/lib/python3.6/site-packages (from -r /home/lgpu0034/uva_deeplearning/assignment_1/code/requirements.txt (line 8))
+Requirement already satisfied: six in /sara/eb/Debian9/Python/3.6.3-foss-2017b/lib/python3.6/site-packages/six-1.11.0-py3.6.egg (from torchvision->-r /home/lgpu0034/uva_deeplearning/assignment_1/code/requirements.txt (line 2))
+Requirement already satisfied: pillow>=4.1.1 in ./.local/lib/python3.6/site-packages (from torchvision->-r /home/lgpu0034/uva_deeplearning/assignment_1/code/requirements.txt (line 2))
+Requirement already satisfied: cycler>=0.10 in ./.local/lib/python3.6/site-packages (from matplotlib->-r /home/lgpu0034/uva_deeplearning/assignment_1/code/requirements.txt (line 3))
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /sara/eb/Debian9/Python/3.6.3-foss-2017b/lib/python3.6/site-packages/pyparsing-2.2.0-py3.6.egg (from matplotlib->-r /home/lgpu0034/uva_deeplearning/assignment_1/code/requirements.txt (line 3))
+Requirement already satisfied: kiwisolver>=1.0.1 in ./.local/lib/python3.6/site-packages (from matplotlib->-r /home/lgpu0034/uva_deeplearning/assignment_1/code/requirements.txt (line 3))
+Requirement already satisfied: python-dateutil>=2.1 in /sara/eb/Debian9/Python/3.6.3-foss-2017b/lib/python3.6/site-packages/python_dateutil-2.6.1-py3.6.egg (from matplotlib->-r /home/lgpu0034/uva_deeplearning/assignment_1/code/requirements.txt (line 3))
+Requirement already satisfied: pytz in /sara/eb/Debian9/Python/3.6.3-foss-2017b/lib/python3.6/site-packages/pytz-2017.3-py3.6.egg (from matplotlib->-r /home/lgpu0034/uva_deeplearning/assignment_1/code/requirements.txt (line 3))
+Requirement already satisfied: scikit-learn in ./.local/lib/python3.6/site-packages (from sklearn->-r /home/lgpu0034/uva_deeplearning/assignment_1/code/requirements.txt (line 7))
+Requirement already satisfied: tqdm in ./.local/lib/python3.6/site-packages (from skorch->-r /home/lgpu0034/uva_deeplearning/assignment_1/code/requirements.txt (line 8))
+Requirement already satisfied: tabulate in ./.local/lib/python3.6/site-packages (from skorch->-r /home/lgpu0034/uva_deeplearning/assignment_1/code/requirements.txt (line 8))
+Requirement already satisfied: scipy in /sara/eb/Debian9/Python/3.6.3-foss-2017b/lib/python3.6/site-packages/scipy-0.19.1-py3.6-linux-x86_64.egg (from skorch->-r /home/lgpu0034/uva_deeplearning/assignment_1/code/requirements.txt (line 8))
+Requirement already satisfied: setuptools in /sara/eb/Debian9/Python/3.6.3-foss-2017b/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib->-r /home/lgpu0034/uva_deeplearning/assignment_1/code/requirements.txt (line 3))
+learning_rate : 0.001
+max_steps : 5000
+batch_size : 128
+eval_freq : 500
+data_dir : /home/lgpu0034/uva_deeplearning/assignment_1/code/cifar10/cifar-10-batches-py/
+
+- - - - - - - - - -
+- STEPS:			 500
+- TRAIN ACC: 			 0.31532248004
+- VALIDATION ACC:		 0.4309
+- - - - - - - - - -
+
+- - - - - - - - - -
+- STEPS:			 1000
+- TRAIN ACC: 			 0.466125
+- VALIDATION ACC:		 0.4879
+- - - - - - - - - -
+
+- - - - - - - - - -
+- STEPS:			 1500
+- TRAIN ACC: 			 0.523734375
+- VALIDATION ACC:		 0.536
+- - - - - - - - - -
+
+- - - - - - - - - -
+- STEPS:			 2000
+- TRAIN ACC: 			 0.5594375
+- VALIDATION ACC:		 0.5654
+- - - - - - - - - -
+
+- - - - - - - - - -
+- STEPS:			 2500
+- TRAIN ACC: 			 0.55715625
+- VALIDATION ACC:		 0.5627
+- - - - - - - - - -
+
+- - - - - - - - - -
+- STEPS:			 3000
+- TRAIN ACC: 			 0.572140625
+- VALIDATION ACC:		 0.5449
+- - - - - - - - - -
+
+- - - - - - - - - -
+- STEPS:			 3500
+- TRAIN ACC: 			 0.601078125
+- VALIDATION ACC:		 0.5902
+- - - - - - - - - -
+
+- - - - - - - - - -
+- STEPS:			 4000
+- TRAIN ACC: 			 0.613546875
+- VALIDATION ACC:		 0.6149
+- - - - - - - - - -
+
+- - - - - - - - - -
+- STEPS:			 4500
+- TRAIN ACC: 			 0.6271875
+- VALIDATION ACC:		 0.6189
+- - - - - - - - - -
+
+- - - - - - - - - -
+- STEPS:			 5000
+- TRAIN ACC: 			 0.637578125
+- VALIDATION ACC:		 0.5871
+- - - - - - - - - -
+Loss over time: 	 [922.7227936983109, 729.804750084877, 662.0064626932144, 622.821270108223, 622.2900868654251, 606.6323543190956, 568.1598361134529, 549.6902681589127, 531.5301656126976, 519.690246284008]
+Val acc over time: 	 [0.4309, 0.4879, 0.536, 0.5654, 0.5627, 0.5449, 0.5902, 0.6149, 0.6189, 0.5871]
+  notice: Q: "...sara_stats": -------------------Begin of SURFsara epilogue----------------------------------
+Q: "...sara_stats": This output was generated by the SURFsara epilogue script
+Q: "...sara_stats": Your job [train_convnet.sh] has been executed in queue [gpu] with
+Q: "...sara_stats": the following PBS arguments:
+Q: "...sara_stats":    mem=250gb,ncpus=1,neednodes=1:ppn=12,nodes=1:ppn=12,walltime=00:10:00
+Q: "...sara_stats":    .
+Q: "...sara_stats": Resources used in job [1783614.batch1.lisa.surfsara.nl] with name [train_convnet.sh]:
+Q: "...sara_stats":    cput=00:05:05,energy_used=0,mem=8439892kb,vmem=67491920kb,walltime=00:04:33
+Q: "...sara_stats":    r30n7.lisa.surfsara.nl
+Q: "...sara_stats":    .
+Q: "...sara_stats": Job start and end time:
+Q: "...sara_stats":   Job start time: Tue Sep 18 19:54:31 CEST 2018
+Q: "...sara_stats":   Job end time  : Tue Sep 18 19:59:04 CEST 2018
+Q: "...sara_stats": ---------------------------------------------------------------------------
+Q: "...sara_stats": WARNING: It seems that this job did not use scratch space.
+Q: "...sara_stats": WARNING: It is strongly recommended to do so. See the following URL
+Q: "...sara_stats":          for more information:
+Q: "...sara_stats":  - https://www.surfsara.nl/systems/lisa/filesystems#The_scratch_file_system
+Q: "...sara_stats": ---------------------End of SURFsara epilogue----------------------------------

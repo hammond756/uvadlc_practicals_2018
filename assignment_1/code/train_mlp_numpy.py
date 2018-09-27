@@ -8,9 +8,10 @@ from __future__ import print_function
 
 import argparse
 import numpy as np
+import matplotlib.pyplot as plt
 import os
 from mlp_numpy import MLP
-from modules import CrossEntropyModule
+from modules import CrossEntropyModule, LinearModule
 import cifar10_utils
 
 # Default constants
@@ -43,13 +44,7 @@ def accuracy(predictions, targets):
   Implement accuracy computation.
   """
 
-  ########################
-  # PUT YOUR CODE HERE  #
-  #######################
-  raise NotImplementedError
-  ########################
-  # END OF YOUR CODE    #
-  #######################
+  accuracy = (predictions.argmax(axis=1) == targets.argmax(axis=1)).mean()
 
   return accuracy
 
@@ -73,13 +68,72 @@ def train():
   else:
     dnn_hidden_units = []
 
-  ########################
-  # PUT YOUR CODE HERE  #
-  #######################
-  raise NotImplementedError
-  ########################
-  # END OF YOUR CODE    #
-  #######################
+  # Load data
+  cifar10 = cifar10_utils.get_cifar10(data_dir=FLAGS.data_dir, one_hot=True, validation_size=0)
+  train_set = cifar10['train']
+  test_set = cifar10['test']
+  val_set = cifar10['validation']
+
+  # Initialize model
+  input_dim = train_set.images[0, :, :, :].size
+  n_classes = train_set.labels[0, :].size
+
+  model = MLP(input_dim, dnn_hidden_units, n_classes)
+  cross_entropy = CrossEntropyModule()
+
+  total_loss = 0
+  losses = []
+  val_acc = []
+  train_acc = []
+  for i in range(FLAGS.max_steps + 1):
+    x, y = train_set.next_batch(FLAGS.batch_size)
+    x = x.reshape(FLAGS.batch_size, -1)
+
+    out = model.forward(x)
+    loss = cross_entropy.forward(out, y)
+    total_loss += loss
+
+    train_acc.append(accuracy(out, y))
+
+    # backward pass
+    dout = cross_entropy.backward(out, y)
+    _ = model.backward(dout)
+
+    # update weights using calculated gradients
+    for module in model.modules:
+      if type(module) == LinearModule:
+        module.params['weight'] = module.params['weight'] - FLAGS.learning_rate * module.grads['weight']
+        module.params['bias'] = module.params['bias'] - FLAGS.learning_rate * module.grads['bias']
+
+
+    if i % FLAGS.eval_freq == 0 and i != 0:
+
+      val_inputs = test_set.images.reshape(test_set.images.shape[0], -1)
+
+      pred = model.forward(val_inputs)
+      targ = test_set.labels
+
+      acc = accuracy(pred, targ)
+
+      losses.append(total_loss / i)
+      val_acc.append(acc)
+
+      print()
+      print("- - - - - - - - - -")
+      print('- STEPS:\t\t\t', i)
+      print('- TRAIN ACC: \t\t\t', np.array(train_acc).mean())
+      print('- VALIDATION ACC:\t\t', acc)
+      print("- - - - - - - - - -")
+
+      train_acc = []
+      total_loss = 0
+
+  print("Loss over time: \t", losses)
+  print("Val acc over time: \t", val_acc)
+
+  save_plots('test.png', losses, val_acc)
+
+
 
 def print_flags():
   """
@@ -87,6 +141,28 @@ def print_flags():
   """
   for key, value in vars(FLAGS).items():
     print(key + ' : ' + str(value))
+
+def save_plots(filename, loss, acc):
+
+  examples = np.arange(len(loss)) * FLAGS.eval_freq * FLAGS.batch_size
+
+  fig, ax1 = plt.subplots()
+
+  color = 'tab:red'
+  ax1.set_xlabel('num examples')
+  ax1.set_ylabel('loss', color=color)
+  ax1.plot(examples, loss, color=color)
+  ax1.tick_params(axis='y', labelcolor=color)
+
+  ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+
+  color = 'tab:blue'
+  ax2.set_ylabel('test acc', color=color)  # we already handled the x-label with ax1
+  ax2.plot(examples, acc, color=color)
+  ax2.tick_params(axis='y', labelcolor=color)
+
+  fig.tight_layout()  # otherwise the right y-label is slightly clipped
+  plt.savefig(filename=filename)
 
 def main():
   """
