@@ -52,8 +52,11 @@ class VanillaRNN(nn.Module):
 
         for t in range(self.seq_length):
 
-            # convert input at time (t) to [BxD] vector
-            x_t = x[:, t].view(self.batch_size, self.input_dim)
+            # convert input at time (t) to one-hot vector. only makes sense
+            # of input_dim == num_classes
+            x_t_emb = x[:, t].view(-1, 1).type(torch.long)
+            x_t = torch.zeros(self.batch_size, self.input_dim)
+            x_t.scatter_(1, x_t_emb, 1)
 
             # compute hidden state
             self.h = torch.mm(x_t, self.Wxh) + torch.mm(self.h, self.Whh) + self.bh
