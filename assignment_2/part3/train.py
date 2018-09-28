@@ -156,14 +156,14 @@ def train(config):
 
         if step % config.sample_every == 0:
             # Generate some sentences by sampling from the model
-            path = os.path.splitext(config.txt_file)[0] + "_generated_samples.txt"
+            path = os.path.splitext(config.txt_file)[0] + "_generated_samples_" + "temp_" + config.temperature + ".txt"
             abs_path = os.path.abspath(path)
-
+            mode = 'a' if step > 0 else 'w'
             print("---")
             print("Write sample to ", path)
             print("---")
 
-            with open(abs_path, 'w') as f:
+            with open(abs_path, mode) as f:
                 progress = "[{}] Train Step {:04d}/{:04d}, Batch Size = {}," \
                        "Accuracy = {:.2f}, Loss = {:.3f}".format(
                     datetime.now().strftime("%Y-%m-%d %H:%M"), step,

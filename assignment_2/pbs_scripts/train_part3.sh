@@ -8,4 +8,8 @@ export LD_LIBRARY_PATH=/hpc/sw/NCCL/2.0.5/lib:/hpc/eb/Debian9/cuDNN/7.0.5-CUDA-9
 
 pip3 install -r ~/uvadlc_practicals_2018/requirements.txt --user --no-cache
 cd ~/uvadlc_practicals_2018/assignment_2/part3
-python train.py --txt_file assets/book_NL_darwin_reis_om_de_wereld.txt --train_steps 10000
+
+for temp in 0.5 1.0 2.0
+do
+	python train.py --txt_file assets/book_NL_darwin_reis_om_de_wereld.txt --train_steps 100000 --temperature $temp --sample_every 1000
+done
