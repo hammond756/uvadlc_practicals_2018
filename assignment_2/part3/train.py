@@ -156,7 +156,7 @@ def train(config):
 
         if step % config.sample_every == 0:
             # Generate some sentences by sampling from the model
-            path = os.path.splitext(config.txt_file)[0] + "_generated_samples_" + "temp_" + config.temperature + ".txt"
+            path = os.path.splitext(config.txt_file)[0] + "_generated_samples_" + "temp_" + str(config.temperature) + ".txt"
             abs_path = os.path.abspath(path)
             mode = 'a' if step > 0 else 'w'
             print("---")
