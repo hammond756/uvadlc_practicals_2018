@@ -1,9 +1,0 @@
-torch
-torchvision
-matplotlib
-numpy
-argparse
-
-sklearn
-skorch
-dill
