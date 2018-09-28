@@ -30,8 +30,8 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 from functools import reduce
 
-from part3.dataset import TextDataset
-from part3.model import TextGenerationModel
+from dataset import TextDataset
+from model import TextGenerationModel
 
 ################################################################################
 

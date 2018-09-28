@@ -28,9 +28,9 @@ nn = torch.nn
 optim = torch.optim
 from torch.utils.data import DataLoader
 
-from part1.dataset import PalindromeDataset
-from part1.vanilla_rnn import VanillaRNN
-from part1.lstm import LSTM
+from dataset import PalindromeDataset
+from vanilla_rnn import VanillaRNN
+from lstm import LSTM
 
 # You may want to look into tensorboardX for logging
 # from tensorboardX import SummaryWriter
