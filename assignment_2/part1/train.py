@@ -32,6 +32,8 @@ from dataset import PalindromeDataset
 from vanilla_rnn import VanillaRNN
 from lstm import LSTM
 
+from pycrayon import CrayonClient
+
 # You may want to look into tensorboardX for logging
 # from tensorboardX import SummaryWriter
 
@@ -60,6 +62,14 @@ def train(config):
                            num_hidden=config.num_hidden,
                            num_classes=config.num_classes,
                            batch_size=config.batch_size)
+
+    experiment_label = "{}_".format(datetime.now().strftime("%Y-%m-%d %H:%M"))
+    for key, value in vars(config).items():
+        experiment_label += "{}={}_".format(key, value)
+
+    # TensorBoard API
+    cc = CrayonClient(hostname='18.202.229.41', port=6007)
+    xp = cc.create_experiment(xp_name=experiment_label)
 
     # Initialize the dataset and data loader (note the +1)
     dataset = PalindromeDataset(config.input_length+1)
@@ -105,11 +115,19 @@ def train(config):
                     accuracy, loss
             ))
 
+            # post metrics to tensorboard
+            xp.add_scalar_dict({
+                'accuracy' : accuracy,
+                'loss' : loss.item()
+            }, wall_time=time.time(), step=step)
+
         if step == config.train_steps:
+
             # If you receive a PyTorch data-loader error, check this bug report:
             # https://github.com/pytorch/pytorch/pull/9655
             break
 
+    _ = xp.to_zip(experiment_label + ".zip")
     print('Done training.')
 
 

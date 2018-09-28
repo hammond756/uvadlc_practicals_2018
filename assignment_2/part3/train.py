@@ -29,6 +29,7 @@ import torch.optim as optim
 import torch.nn as nn
 from torch.utils.data import DataLoader
 from functools import reduce
+from pycrayon import CrayonClient
 
 from dataset import TextDataset
 from model import TextGenerationModel
@@ -109,6 +110,15 @@ def train(config):
                                 lstm_num_layers=config.lstm_num_layers,
                                 device=device)
 
+
+    experiment_label = "{}_".format(datetime.now().strftime("%Y-%m-%d %H:%M"))
+    for key, value in vars(config).items():
+        experiment_label += "{}={}_".format(key, value)
+
+    # TensorBoard API
+    cc = CrayonClient(hostname='18.202.229.41', port=6007)
+    xp = cc.create_experiment(xp_name=experiment_label)
+
     # Setup the loss and optimizer
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.RMSprop(model.parameters(), lr=config.learning_rate)
@@ -154,6 +164,11 @@ def train(config):
                     accuracy, loss
             ))
 
+            xp.add_scalar_dict({
+                'accuracy' : accuracy,
+                'loss' : loss.item()
+            }, step=step, wall_time=time.time())
+
         if step % config.sample_every == 0:
             # Generate some sentences by sampling from the model
             path = os.path.splitext(config.txt_file)[0] + "_generated_samples_" + "temp_" + str(config.temperature) + ".txt"
@@ -184,6 +199,7 @@ def train(config):
         except:
             pass
 
+    _ = xp.to_zip(experiment_label + ".zip")
     print('Done training.')
 
 
