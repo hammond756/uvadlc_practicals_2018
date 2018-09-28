@@ -37,7 +37,7 @@ from model import TextGenerationModel
 
 def one_hot(batch, vocab_size):
 
-    X = torch.zeros(batch.shape[0], batch.shape[1], vocab_size)
+    X = torch.zeros(batch.shape[0], batch.shape[1], vocab_size, device=batch.device)
     X.scatter_(2, batch[:,:,None], 1)
 
     return X
@@ -59,7 +59,7 @@ def sample_output(output, temperature=1.0):
 #     return torch.softmax(output, dim=0).argmax(dim=1, keepdim=True)
 
 
-def sample_model(model, vocab_size, device='cpu', temp=1.0, hidden_states=None, n=30, prev_char=None):
+def sample_model(model, vocab_size, device=torch.device('cpu'), temp=1.0, hidden_states=None, n=30, prev_char=None):
 
     if n == 0:
         return prev_char
@@ -85,7 +85,7 @@ def sample_model(model, vocab_size, device='cpu', temp=1.0, hidden_states=None, 
     return encoded_text
 
 def string_from_one_hot(sequence, dataset):
-    char_idxs = sequence.argmax(dim=2).squeeze_(0).numpy()
+    char_idxs = sequence.argmax(dim=2).squeeze_(0).cpu().numpy()
     return dataset.convert_to_string(char_idxs)
 
 def get_predictions(outputs):
