@@ -30,8 +30,8 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 from functools import reduce
 
-from part3.dataset import TextDataset
-from part3.model import TextGenerationModel
+from dataset import TextDataset
+from model import TextGenerationModel
 
 ################################################################################
 
@@ -97,7 +97,8 @@ def train(config):
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
     # Initialize the dataset and data loader (note the +1)
-    dataset = TextDataset(config.txt_file, config.seq_length)
+    abs_path = os.path.abspath(config.txt_file)
+    dataset = TextDataset(abs_path, config.seq_length)
     data_loader = DataLoader(dataset, config.batch_size, num_workers=1)
 
     # Initialize the model that we are going to use
@@ -156,12 +157,13 @@ def train(config):
         if step % config.sample_every == 0:
             # Generate some sentences by sampling from the model
             path = os.path.splitext(config.txt_file)[0] + "_generated_samples.txt"
+            abs_path = os.path.abspath(path)
 
             print("---")
             print("Write sample to ", path)
             print("---")
 
-            with open(path, 'w') as f:
+            with open(abs_path, 'w') as f:
                 progress = "[{}] Train Step {:04d}/{:04d}, Batch Size = {}," \
                        "Accuracy = {:.2f}, Loss = {:.3f}".format(
                     datetime.now().strftime("%Y-%m-%d %H:%M"), step,
