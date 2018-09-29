@@ -3,7 +3,8 @@ torchvision
 matplotlib
 numpy
 argparse
-
+requests
 sklearn
 skorch
 dill
+pycrayon
