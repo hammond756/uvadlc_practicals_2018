@@ -10,5 +10,5 @@ pip3 install -r ~/uvadlc_practicals_2018/requirements.txt --user --no-cache
 cd ~/uvadlc_practicals_2018/assignment_2/part1/
 for T in 5 10 15 20
 do
-	python train.py --model_type LSTM --input_length $T
+	python train.py --model_type LSTM --input_length $T --inpud_dim 10
 done

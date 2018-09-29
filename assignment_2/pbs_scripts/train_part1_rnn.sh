@@ -10,5 +10,5 @@ pip3 install -r ~/uvadlc_practicals_2018/requirements.txt --user --no-cache
 cd ~/uvadlc_practicals_2018/assignment_2/part1/
 for T in 5 10 15 20 25
 do
-	python train.py --model_type RNN --input_length $T
+	python train.py --model_type RNN --input_length $T --input_dim 10
 done
