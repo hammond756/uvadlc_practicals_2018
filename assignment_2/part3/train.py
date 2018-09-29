@@ -55,11 +55,6 @@ def sample_output(output, temperature=1.0):
 
     return sample
 
-# def sample_output(output, temperature=None):
-#     print("output", output.shape)
-#     return torch.softmax(output, dim=0).argmax(dim=1, keepdim=True)
-
-
 def sample_model(model, vocab_size, device=torch.device('cpu'), temp=1.0, hidden_states=None, n=30, prev_char=None):
 
     if n == 0:
@@ -115,10 +110,6 @@ def train(config):
     for key, value in vars(config).items():
         experiment_label += "{}={}_".format(key, value)
 
-    # TensorBoard API
-    cc = CrayonClient(hostname='18.202.229.41', port=6007)
-    xp = cc.create_experiment(xp_name=experiment_label)
-
     # Setup the loss and optimizer
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.RMSprop(model.parameters(), lr=config.learning_rate)
@@ -165,36 +156,9 @@ def train(config):
                         accuracy, loss
                 ))
 
-                xp.add_scalar_dict({
-                    'accuracy' : accuracy,
-                    'loss' : loss.item()
-                }, step=epoch*step, wall_time=time.time())
-
-            # if step % config.sample_every == 0:
-            #     # Generate some sentences by sampling from the model
-            #     path = os.path.splitext(config.txt_file)[0] + "_generated_samples_" + "temp_" + str(config.temperature) + ".txt"
-            #     abs_path = os.path.abspath(path)
-            #     mode = 'a' if step > 0 else 'w'
-            #     print("---")
-            #     print("Write sample to ", path)
-            #     print("---")
-            #
-            #     with open(abs_path, mode) as f:
-            #         progress = "[{}] Train Step {:04d}/{:04d}, Batch Size = {}," \
-            #                "Accuracy = {:.2f}, Loss = {:.3f}".format(
-            #             datetime.now().strftime("%Y-%m-%d %H:%M"), step,
-            #             config.train_steps, config.batch_size, accuracy, loss)
-            #
-            #         generated_sequence = sample_model(model, dataset.vocab_size, device=device, temp=config.temperature, n=config.generate_n)
-            #         sample = string_from_one_hot(generated_sequence, dataset)
-            #
-            #         f.write(progress + '\n\n')
-            #         f.write(sample)
-            #         f.write('\n\n--------\n\n\n')
-
             torch.save(model, 'grimm/grimm_epoch_{}.pt'.format(epoch))
 
-    _ = xp.to_zip(experiment_label + ".zip")
+    # _ = xp.to_zip(experiment_label + ".zip")
     print('Done training.')
 
 
