@@ -1,0 +1,1709 @@
+[2018-09-28 11:13] Train Step 0000/100000, Batch Size = 64,Accuracy = 0.00, Loss = 4.748
+
+Kº=!yW¯q.8Â-6e±l4yuQ*»‰¨ºj-bB±±
+
+--------
+
+
+[2018-09-28 11:13] Train Step 0100/100000, Batch Size = 64,Accuracy = 0.15, Loss = 3.107
+
+r Vr erTWs.-5llt©6kewwkwowhnii
+
+--------
+
+
+[2018-09-28 11:14] Train Step 0200/100000, Batch Size = 64,Accuracy = 0.26, Loss = 2.748
+
+telan 
+(ckinotb.;we
+‹pdoe bo
+DD
+
+--------
+
+
+[2018-09-28 11:14] Train Step 0300/100000, Batch Size = 64,Accuracy = 0.37, Loss = 2.236
+
+wer Btephs
+emaCin Hlvo  cSO©KK
+
+--------
+
+
+[2018-09-28 11:14] Train Step 0400/100000, Batch Size = 64,Accuracy = 0.41, Loss = 2.067
+
+G¿9Aven aadtwefe dt,. deiNpo;ss
+
+--------
+
+
+[2018-09-28 11:14] Train Step 0500/100000, Batch Size = 64,Accuracy = 0.41, Loss = 1.960
+
+L: ZK.S©yalioak,. SLomd,eIfet  
+
+--------
+
+
+[2018-09-28 11:14] Train Step 0600/100000, Batch Size = 64,Accuracy = 0.44, Loss = 1.905
+
+s)heldin wam deg
+geeÃEadm zegee
+
+--------
+
+
+[2018-09-28 11:14] Train Step 0700/100000, Batch Size = 64,Accuracy = 0.46, Loss = 1.859
+
+lÃjaduiddamevr. Afgemens  A° tt
+
+--------
+
+
+[2018-09-28 11:14] Train Step 0800/100000, Batch Size = 64,Accuracy = 0.45, Loss = 1.833
+
+c4- beedikhein
+9hewudert,, Qvrr
+
+--------
+
+
+[2018-09-28 11:14] Train Step 0900/100000, Batch Size = 64,Accuracy = 0.46, Loss = 1.844
+
+nijs)
+brap.. D:
+ 4ONiNIN;JrÃ«II
+
+--------
+
+
+[2018-09-28 11:14] Train Step 1000/100000, Batch Size = 64,Accuracy = 0.48, Loss = 1.773
+
+,
+ik
+ y8,2'y ettrvoÃ>uvictlosuu
+
+--------
+
+
+[2018-09-28 11:14] Train Step 1100/100000, Batch Size = 64,Accuracy = 0.48, Loss = 1.747
+
+tx-Id.W.5
+J.bsp :wtimioqseelipp
+
+--------
+
+
+[2018-09-28 11:14] Train Step 1200/100000, Batch Size = 64,Accuracy = 0.51, Loss = 1.685
+
+nu; mal;-6pkonin
+yobelemrrÃkt  
+
+--------
+
+
+[2018-09-28 11:14] Train Step 1300/100000, Batch Size = 64,Accuracy = 0.51, Loss = 1.655
+
+!] 'c"
+ INl)27Water(llacgts  ..
+
+--------
+
+
+[2018-09-28 11:14] Train Step 1400/100000, Batch Size = 64,Accuracy = 0.51, Loss = 1.669
+
+ar gygt?. Zakscze buhog
+is:
+622
+
+--------
+
+
+[2018-09-28 11:14] Train Step 1500/100000, Batch Size = 64,Accuracy = 0.51, Loss = 1.664
+
+#p erer..
+TZ[5
+Â7* wlbrworyÃ©ii
+
+--------
+
+
+[2018-09-28 11:14] Train Step 1600/100000, Batch Size = 64,Accuracy = 0.50, Loss = 1.681
+
+©boucom'sze:) houth. Zendeert;;
+
+--------
+
+
+[2018-09-28 11:15] Train Step 1700/100000, Batch Size = 64,Accuracy = 0.51, Loss = 1.661
+
+, T9BDUvbTXuAQS-liM9YAatta, Â""
+
+--------
+
+
+[2018-09-28 11:15] Train Step 1800/100000, Batch Size = 64,Accuracy = 0.52, Loss = 1.609
+
+an Budrbyer.
+IsChicroedu)--
+thh
+
+--------
+
+
+[2018-09-28 11:15] Train Step 1900/100000, Batch Size = 64,Accuracy = 0.54, Loss = 1.568
+
+wer, zuui nooel wrrof
+unt,, myy
+
+--------
+
+
+[2018-09-28 11:15] Train Step 2000/100000, Batch Size = 64,Accuracy = 0.54, Loss = 1.558
+
+age land, dabtingsecgvisg-¨venn
+
+--------
+
+
+[2018-09-28 11:15] Train Step 2100/100000, Batch Size = 64,Accuracy = 0.55, Loss = 1.495
+
+ vrieesvorp
+ie es ziceadt.-
+ CC
+
+--------
+
+
+[2018-09-28 11:15] Train Step 2200/100000, Batch Size = 64,Accuracy = 0.52, Loss = 1.549
+
+rata, ee vasQ, gissch hevYl, cc
+
+--------
+
+
+[2018-09-28 11:15] Train Step 2300/100000, Batch Size = 64,Accuracy = 0.54, Loss = 1.535
+
+, zaD chigptwanticof,
+Zuidaze,,
+
+--------
+
+
+[2018-09-28 11:15] Train Step 2400/100000, Batch Size = 64,Accuracy = 0.55, Loss = 1.562
+
+.: madigatig te dakdekbronkel  
+
+--------
+
+
+[2018-09-28 11:15] Train Step 2500/100000, Batch Size = 64,Accuracy = 0.53, Loss = 1.581
+
+ St spoovlegiger ronkphalbre,
+
+
+
+--------
+
+
+[2018-09-28 11:15] Train Step 2600/100000, Batch Size = 64,Accuracy = 0.53, Loss = 1.590
+
+nnis in, manar By=gppusgy--ditt
+
+--------
+
+
+[2018-09-28 11:15] Train Step 2700/100000, Batch Size = 64,Accuracy = 0.54, Loss = 1.538
+
+obilly,; ©7 
+Ble-cvoode lee,vaa
+
+--------
+
+
+[2018-09-28 11:15] Train Step 2800/100000, Batch Size = 64,Accuracy = 0.56, Loss = 1.491
+
+ren.,
+is schrijve: "Ip gelijkss
+
+--------
+
+
+[2018-09-28 11:15] Train Step 2900/100000, Batch Size = 64,Accuracy = 0.54, Loss = 1.560
+
+orvenlsyrma
+heurove ik8h!
+havaa
+
+--------
+
+
+[2018-09-28 11:15] Train Step 3000/100000, Batch Size = 64,Accuracy = 0.53, Loss = 1.583
+
+gsd. Dnachopvriey-Hw*eidwoede  
+
+--------
+
+
+[2018-09-28 11:16] Train Step 3100/100000, Batch Size = 64,Accuracy = 0.55, Loss = 1.496
+
+t, wÃZm
+merkemry reen. BaaddwÃÃ
+
+--------
+
+
+[2018-09-28 11:16] Train Step 3200/100000, Batch Size = 64,Accuracy = 0.52, Loss = 1.640
+
+0-O/in
+¯ugec:boor's elsazd niee
+
+--------
+
+
+[2018-09-28 11:16] Train Step 3300/100000, Batch Size = 64,Accuracy = 0.55, Loss = 1.495
+
+
+aÃQkwafs-Â¯dlichta epenkbaartt
+
+--------
+
+
+[2018-09-28 11:16] Train Step 3400/100000, Batch Size = 64,Accuracy = 0.55, Loss = 1.543
+
+'G-SfH*kAT ÂMLE*EFRNL
+HEhTISSpp
+
+--------
+
+
+[2018-09-28 11:16] Train Step 3500/100000, Batch Size = 64,Accuracy = 0.56, Loss = 1.518
+
+9;; (Strinlorccui eNslal,
+den--
+
+--------
+
+
+[2018-09-28 11:16] Train Step 3600/100000, Batch Size = 64,Accuracy = 0.55, Loss = 1.506
+
+] 
+I; lovnber Centty-Gad do
+eee
+
+--------
+
+
+[2018-09-28 11:16] Train Step 3700/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.425
+
+jux.O Lhihhonh -balk dus-Sommii
+
+--------
+
+
+[2018-09-28 11:16] Train Step 3800/100000, Batch Size = 64,Accuracy = 0.56, Loss = 1.471
+
+gtt, eene ip vurdeelij gevÃ³rZZ
+
+--------
+
+
+[2018-09-28 11:16] Train Step 3900/100000, Batch Size = 64,Accuracy = 0.56, Loss = 1.438
+
+ªpekt, moeptuurtegede vuudenzoo
+
+--------
+
+
+[2018-09-28 11:16] Train Step 4000/100000, Batch Size = 64,Accuracy = 0.55, Loss = 1.484
+
+ 8 St=nea's))e
+halereemroS-
+344
+
+--------
+
+
+[2018-09-28 11:16] Train Step 4100/100000, Batch Size = 64,Accuracy = 0.54, Loss = 1.491
+
+per
+Mahrwl:Wenig ecgtrees
+fob,,
+
+--------
+
+
+[2018-09-28 11:16] Train Step 4200/100000, Batch Size = 64,Accuracy = 0.55, Loss = 1.466
+
+Yome'c tusskewe-Emmyn
+tot meerr
+
+--------
+
+
+[2018-09-28 11:16] Train Step 4300/100000, Batch Size = 64,Accuracy = 0.55, Loss = 1.515
+
+eschber."); ondersocht, m7cel  
+
+--------
+
+
+[2018-09-28 11:16] Train Step 4400/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.394
+
+ksplekak. Usc"um-Wel'S.)s; c6))
+
+--------
+
+
+[2018-09-28 11:16] Train Step 4500/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.386
+
+wingig-holgers 24, ik moddig jj
+
+--------
+
+
+[2018-09-28 11:17] Train Step 4600/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.352
+
+et uituast-Macey. 0s; of men VV
+
+--------
+
+
+[2018-09-28 11:17] Train Step 4700/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.411
+
+SBrozelvad;. BaJM., wiÃªz) morr
+
+--------
+
+
+[2018-09-28 11:17] Train Step 4800/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.435
+
+ngevestoor en intand afchos
+vll
+
+--------
+
+
+[2018-09-28 11:17] Train Step 4900/100000, Batch Size = 64,Accuracy = 0.56, Loss = 1.452
+
+on
+een plaats thOs.- zicd.,--aa
+
+--------
+
+
+[2018-09-28 11:17] Train Step 5000/100000, Batch Size = 64,Accuracy = 0.55, Loss = 1.496
+
+s" we-haphug. OxfetO
+SBaeno.hEE
+
+--------
+
+
+[2018-09-28 11:17] Train Step 5100/100000, Batch Size = 64,Accuracy = 0.56, Loss = 1.453
+
+ll.(474
+harre
+pomtr,. Erkomelii
+
+--------
+
+
+[2018-09-28 11:17] Train Step 5200/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.397
+
+]!]
+Waarnom
+uigewaad lusthad,  
+
+--------
+
+
+[2018-09-28 11:17] Train Step 5300/100000, Batch Size = 64,Accuracy = 0.55, Loss = 1.479
+
+oo tiecen bleef en aan Mox; hii
+
+--------
+
+
+[2018-09-28 11:17] Train Step 5400/100000, Batch Size = 64,Accuracy = 0.56, Loss = 1.448
+
+k in haarnÃ©lent
+het veekten
+ii
+
+--------
+
+
+[2018-09-28 11:17] Train Step 5500/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.371
+
+eerind: er
+zijn Scedainlouverss
+
+--------
+
+
+[2018-09-28 11:17] Train Step 5600/100000, Batch Size = 64,Accuracy = 0.56, Loss = 1.434
+
+c.''WPe'o Jemme, diemchiS. Afyy
+
+--------
+
+
+[2018-09-28 11:17] Train Step 5700/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.392
+
+g ip hoodtastrif-
+oekvermas dee
+
+--------
+
+
+[2018-09-28 11:17] Train Step 5800/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.405
+
+oneensbijnelen, zal Sv.w.i85.  
+
+--------
+
+
+[2018-09-28 11:17] Train Step 5900/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.345
+
+0*75 tisbuide,," YCRqDDN3"RX-MM
+
+--------
+
+
+[2018-09-28 11:18] Train Step 6000/100000, Batch Size = 64,Accuracy = 0.54, Loss = 1.481
+
+oort)-
+Teskeors
+in keppets"ripp
+
+--------
+
+
+[2018-09-28 11:18] Train Step 6100/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.404
+
+)-.,-47 Jauggems.
+
+(©Ã³E snijff
+
+--------
+
+
+[2018-09-28 11:18] Train Step 6200/100000, Batch Size = 64,Accuracy = 0.56, Loss = 1.429
+
+phlat;
+inda, doch zi³vouhe iddd
+
+--------
+
+
+[2018-09-28 11:18] Train Step 6300/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.405
+
+? Baschmluvelzm vf IA. Dxo
+ness
+
+--------
+
+
+[2018-09-28 11:18] Train Step 6400/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.375
+
+hacse's.a.e.
+4). Zhitteke GThee
+
+--------
+
+
+[2018-09-28 11:18] Train Step 6500/100000, Batch Size = 64,Accuracy = 0.56, Loss = 1.451
+
+oldhed-Afsel kan
+sam, metzom ff
+
+--------
+
+
+[2018-09-28 11:18] Train Step 6600/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.373
+
+ kosgehant
+dvieriger geweelt ii
+
+--------
+
+
+[2018-09-28 11:18] Train Step 6700/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.376
+
+, witmline opmlinsen, hoofdgebb
+
+--------
+
+
+[2018-09-28 11:18] Train Step 6800/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.424
+
+gehheid, nadaarnd, als riemenee
+
+--------
+
+
+[2018-09-28 11:18] Train Step 6900/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.423
+
+I*m;YoyIs"
+op
+webenn H-R-:os 33
+
+--------
+
+
+[2018-09-28 11:18] Train Step 7000/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.396
+
+5]
+
+[57]", Payli,"
+I.); deeld""
+
+--------
+
+
+[2018-09-28 11:18] Train Step 7100/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.474
+
+).--"T.
+A," frankkiscir
+lsriaff
+
+--------
+
+
+[2018-09-28 11:18] Train Step 7200/100000, Batch Size = 64,Accuracy = 0.56, Loss = 1.408
+
+g?h*/zde
+twak.,-Eermiyrr
+Verquu
+
+--------
+
+
+[2018-09-28 11:18] Train Step 7300/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.325
+
+smhbeevuw"trit.
+Dekt.) het vedd
+
+--------
+
+
+[2018-09-28 11:18] Train Step 7400/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.393
+
+m
+ligfifpondbus) Oivar Hewtvygg
+
+--------
+
+
+[2018-09-28 11:19] Train Step 7500/100000, Batch Size = 64,Accuracy = 0.56, Loss = 1.480
+
+in:hoesvolg. hetz verbon'den.  
+
+--------
+
+
+[2018-09-28 11:19] Train Step 7600/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.300
+
+st Pebrul-Lr7n!-All
+mebebrake::
+
+--------
+
+
+[2018-09-28 11:19] Train Step 7700/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.388
+
+): versverged; dat
+ik; tegrooii
+
+--------
+
+
+[2018-09-28 11:19] Train Step 7800/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.421
+
+(te
+verzad. Aard. Droofdlicht!!
+
+--------
+
+
+[2018-09-28 11:19] Train Step 7900/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.370
+
+N
+weide) met aardscheiden hitPP
+
+--------
+
+
+[2018-09-28 11:19] Train Step 8000/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.395
+
+ 59Â°T-.,
+waar zoophua'blevenss
+
+--------
+
+
+[2018-09-28 11:19] Train Step 8100/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.360
+
+, honten, mond,zglijven. Mij kk
+
+--------
+
+
+[2018-09-28 11:19] Train Step 8200/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.360
+
+rismodes] MÃxyei) zijn: zoodigg
+
+--------
+
+
+[2018-09-28 11:19] Train Step 8300/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.394
+
+sttij)
+slek
+ginas, Ã©Ã©nbomidoo
+
+--------
+
+
+[2018-09-28 11:19] Train Step 8400/100000, Batch Size = 64,Accuracy = 0.56, Loss = 1.433
+
+8,49/7) Terngeliqen VoIpasmriaa
+
+--------
+
+
+[2018-09-28 11:19] Train Step 8500/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.332
+
+tzip de-Clemiduard: Hiles,of,  
+
+--------
+
+
+[2018-09-28 11:19] Train Step 8600/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.327
+
+
+inlawd
+twaatf newver uisen mee
+
+--------
+
+
+[2018-09-28 11:19] Train Step 8700/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.410
+
+oorm), dicht;
+"Basbley*, Gyetee
+
+--------
+
+
+[2018-09-28 11:20] Train Step 8800/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.431
+
+ijlt,
+had bolt
+dit3, met spoÃ¯¯
+
+--------
+
+
+[2018-09-28 11:20] Train Step 8900/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.369
+
+efkgebruid einding waarsovelijj
+
+--------
+
+
+[2018-09-28 11:20] Train Step 9000/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.378
+
+q7130,54Eorm) XVOIOSDTOp-aUDI,,
+
+--------
+
+
+[2018-09-28 11:20] Train Step 9100/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.357
+
+7] *'y reile oomdat en
+bomernaa
+
+--------
+
+
+[2018-09-28 11:20] Train Step 9200/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.363
+
+ue Faus-Nardi-bek cnurrond matt
+
+--------
+
+
+[2018-09-28 11:20] Train Step 9300/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.394
+
+EVDGENMERH.l¶aacos0,
+Tindsbyuuu
+
+--------
+
+
+[2018-09-28 11:20] Train Step 9400/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.325
+
+S vrela's, majppatelje; mtcatii
+
+--------
+
+
+[2018-09-28 11:20] Train Step 9500/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.380
+
+kunt
+is bigwaardzels. Zoo
+AzÃ³³
+
+--------
+
+
+[2018-09-28 11:20] Train Step 9600/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.277
+
+e EeN Mars 
+zooddraaw;
+maar E..
+
+--------
+
+
+[2018-09-28 11:20] Train Step 9700/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.374
+
+600
+Engiensch-Mayjo Ctlan" Jacc
+
+--------
+
+
+[2018-09-28 11:20] Train Step 9800/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.339
+
+zoowens-Pocilo.),
+d. FEDuN IV  
+
+--------
+
+
+[2018-09-28 11:20] Train Step 9900/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.326
+
+IENDSD HAZRVATaA VII7I.
+
+AFHTRR
+
+--------
+
+
+[2018-09-28 11:20] Train Step 10000/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.418
+
+tonogkoyrg; maar ondruomziet AA
+
+--------
+
+
+[2018-09-28 11:20] Train Step 10100/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.373
+
+V,eelmmy selen!"" niet to; terr
+
+--------
+
+
+[2018-09-28 11:21] Train Step 10200/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.320
+
+]
+
+Dikwiszeming: Sthaat Huske  
+
+--------
+
+
+[2018-09-28 11:21] Train Step 10300/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.407
+
+puatope d-Kol,
+V.,
+Sjondot
+dell
+
+--------
+
+
+[2018-09-28 11:21] Train Step 10400/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.375
+
+ly-BiVmag,,
+NeiVF(lao; in
+zij  
+
+--------
+
+
+[2018-09-28 11:21] Train Step 10500/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.365
+
+5-vombeggetrokt 60% voetasswbee
+
+--------
+
+
+[2018-09-28 11:21] Train Step 10600/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.330
+
+Â!6'9 methui.;
+kus--ekelven, PP
+
+--------
+
+
+[2018-09-28 11:21] Train Step 10700/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.411
+
+nadotoÃ´riÃ«!. Noscal, WeOrpIss
+
+--------
+
+
+[2018-09-28 11:21] Train Step 10800/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.287
+
+13] beeld, mana's nachtde eemmm
+
+--------
+
+
+[2018-09-28 11:21] Train Step 10900/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.349
+
+soedde-
+zonnessin;
+ateilijk
+hee
+
+--------
+
+
+[2018-09-28 11:21] Train Step 11000/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.286
+
+g dik niet men Davidien, hetgii
+
+--------
+
+
+[2018-09-28 11:21] Train Step 11100/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.400
+
+e
+word te nveek;
+f twijfelh, dd
+
+--------
+
+
+[2018-09-28 11:21] Train Step 11200/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.364
+
+ahis zitsth schordveren.
+maar
+
+
+
+--------
+
+
+[2018-09-28 11:21] Train Step 11300/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.356
+
+5 jonge wwn:
+' D¡, teze Rolschh
+
+--------
+
+
+[2018-09-28 11:21] Train Step 11400/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.355
+
+ blaftmoecicÃ³rica.q,9 Heid Koo
+
+--------
+
+
+[2018-09-28 11:21] Train Step 11500/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.259
+
+oven), waaridwadde's; wewelnd,,
+
+--------
+
+
+[2018-09-28 11:21] Train Step 11600/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.312
+
+lodus
+ins' Colodte. laatje
+kann
+
+--------
+
+
+[2018-09-28 11:22] Train Step 11700/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.367
+
+usschve.. Bugubune in
+vijapbroo
+
+--------
+
+
+[2018-09-28 11:22] Train Step 11800/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.296
+
+ruidte. Deelolgsel,
+Innar. BÃ44
+
+--------
+
+
+[2018-09-28 11:22] Train Step 11900/100000, Batch Size = 64,Accuracy = 0.62, Loss = 1.274
+
+Ã©Ã©nage 55Â° GOHrONAivas
+way;;
+
+--------
+
+
+[2018-09-28 11:22] Train Step 12000/100000, Batch Size = 64,Accuracy = 0.55, Loss = 1.418
+
+ droesgakce). Diezen wreeddzayy
+
+--------
+
+
+[2018-09-28 11:22] Train Step 12100/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.320
+
+Â° zou
+brachquirlas),
+ekreema--
+
+--------
+
+
+[2018-09-28 11:22] Train Step 12200/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.317
+
+ Profven
+gecoso Proj. slochte,,
+
+--------
+
+
+[2018-09-28 11:22] Train Step 12300/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.304
+
+VIspaan noch was:
+coWreiRbborff
+
+--------
+
+
+[2018-09-28 11:22] Train Step 12400/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.328
+
+Â.o)c")). Gom
+
+If Natref); ahaa
+
+--------
+
+
+[2018-09-28 11:22] Train Step 12500/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.315
+
+).), snak, wie purp, oNizhe; FF
+
+--------
+
+
+[2018-09-28 11:22] Train Step 12600/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.314
+
+kele zijkkamÃgilitmblerkseer.
+
+
+
+--------
+
+
+[2018-09-28 11:22] Train Step 12700/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.375
+
+agch reevervan
+te BleiÂ"
+
+Plazz
+
+--------
+
+
+[2018-09-28 11:22] Train Step 12800/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.348
+
+3¨fgevruchten;
+giede Onthokf oo
+
+--------
+
+
+[2018-09-28 11:22] Train Step 12900/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.281
+
+ Cwantheems,zaze
+luch riffsmigg
+
+--------
+
+
+[2018-09-28 11:22] Train Step 13000/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.276
+
+ms ValceIIqqukbijnve.-nesgedevv
+
+--------
+
+
+[2018-09-28 11:23] Train Step 13100/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.326
+
+1375]
+He landoniÃvanhoudgen.;  
+
+--------
+
+
+[2018-09-28 11:23] Train Step 13200/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.320
+
+t. the Vrogyoceimel, 220hanus))
+
+--------
+
+
+[2018-09-28 11:23] Train Step 13300/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.319
+
+hadz.-L.; aann uitsc-383Ims enn
+
+--------
+
+
+[2018-09-28 11:23] Train Step 13400/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.366
+
+nktub,, 2060 MAn. Kamagirodae,,
+
+--------
+
+
+[2018-09-28 11:23] Train Step 13500/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.346
+
+oo,cwel-hol;"wand ve sqoptiquee
+
+--------
+
+
+[2018-09-28 11:23] Train Step 13600/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.286
+
+
+Negestewwiss, kon Zijlingen oo
+
+--------
+
+
+[2018-09-28 11:23] Train Step 13700/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.316
+
+inos betaomtacoÃ«n vervull"is,,
+
+--------
+
+
+[2018-09-28 11:23] Train Step 13800/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.286
+
+). Dhipg wat:
+ ect y; P.ÂcaTorr
+
+--------
+
+
+[2018-09-28 11:23] Train Step 13900/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.296
+
+uedsoven- von
+Britopynodd, datt
+
+--------
+
+
+[2018-09-28 11:23] Train Step 14000/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.318
+
+ Repu reds, leeferengen,
+owaw  
+
+--------
+
+
+[2018-09-28 11:23] Train Step 14100/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.311
+
+ECSOSORE LBUQ;ook en vleede. WW
+
+--------
+
+
+[2018-09-28 11:23] Train Step 14200/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.354
+
+'t) 3 thuisentnrekphoppelen, ss
+
+--------
+
+
+[2018-09-28 11:23] Train Step 14300/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.307
+
+d te bewoob
+geect
+viffe,,. Ongg
+
+--------
+
+
+[2018-09-28 11:23] Train Step 14400/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.279
+
+sYrt,
+Tzegan terugvidzeg--Piess
+
+--------
+
+
+[2018-09-28 11:23] Train Step 14500/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.339
+
+. Offens
+(waarm-  grofverteerdd
+
+--------
+
+
+[2018-09-28 11:24] Train Step 14600/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.311
+
+" in Bahea flar1-scherm; tant  
+
+--------
+
+
+[2018-09-28 11:24] Train Step 14700/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.252
+
+ago,"Theore a in
+9716 had (Flgg
+
+--------
+
+
+[2018-09-28 11:24] Train Step 14800/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.316
+
+¨g; en "Ka.d.
+
+
+
+ 3 MAla Hij.  
+
+--------
+
+
+[2018-09-28 11:24] Train Step 14900/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.322
+
+ "grutst noczamer (gohet duizee
+
+--------
+
+
+[2018-09-28 11:24] Train Step 15000/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.319
+
+ te wien."--6jus en fozoutaÃ¯nn
+
+--------
+
+
+[2018-09-28 11:24] Train Step 15100/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.374
+
+«n
+uwa,
+J, just"--erf"by
+lharss
+
+--------
+
+
+[2018-09-28 11:24] Train Step 15200/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.308
+
+4Â°R.
+5wadis Cdilt;,
+niet 8,588
+
+--------
+
+
+[2018-09-28 11:24] Train Step 15300/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.389
+
+Ohele
+del
+230 ongeveken ditgemm
+
+--------
+
+
+[2018-09-28 11:24] Train Step 15400/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.288
+
+otwone sechials sponde en uurll
+
+--------
+
+
+[2018-09-28 11:24] Train Step 15500/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.313
+
+an
+d'e
+effvloeg uit modderbanss
+
+--------
+
+
+[2018-09-28 11:24] Train Step 15600/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.290
+
+dlarwiza
+vde, sproozs kozenbraa
+
+--------
+
+
+[2018-09-28 11:24] Train Step 15700/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.345
+
+-H. SEd. 1837). VÃ³enlicht Zedd
+
+--------
+
+
+[2018-09-28 11:24] Train Step 15800/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.312
+
+en. Teews-drijfelbakt:-,hehp
+aa
+
+--------
+
+
+[2018-09-28 11:24] Train Step 15900/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.261
+
+natemoerens;
+maar (Souir. "Isbb
+
+--------
+
+
+[2018-09-28 11:25] Train Step 16000/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.329
+
+Ried al 
+hobbec Ovey 183,7
+zell
+
+--------
+
+
+[2018-09-28 11:25] Train Step 16100/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.421
+
+geruklen of vier dwarhibr
+pympp
+
+--------
+
+
+[2018-09-28 11:25] Train Step 16200/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.332
+
+ÂV) by-FUpuekon gepaagklang vee
+
+--------
+
+
+[2018-09-28 11:25] Train Step 16300/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.336
+
+h; en ipheden; maar zoowel in  
+
+--------
+
+
+[2018-09-28 11:25] Train Step 16400/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.262
+
+ epfid thudschinne
+aspios is hh
+
+--------
+
+
+[2018-09-28 11:25] Train Step 16500/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.286
+
+sluuorberh'ucm: die nuymunug JJ
+
+--------
+
+
+[2018-09-28 11:25] Train Step 16600/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.326
+
+ L*Seana
+koeer, onze een nieuww
+
+--------
+
+
+[2018-09-28 11:25] Train Step 16700/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.346
+
+lz. t ZÃOk,
+had
+zij oe-sbeur?  
+
+--------
+
+
+[2018-09-28 11:25] Train Step 16800/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.313
+
+8- "L.k dobÃ¨,, Elz. 
+45 trulss
+
+--------
+
+
+[2018-09-28 11:25] Train Step 16900/100000, Batch Size = 64,Accuracy = 0.62, Loss = 1.222
+
+a
+haags wÃ¨n over den),
+onhoogg
+
+--------
+
+
+[2018-09-28 11:25] Train Step 17000/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.262
+
+,6800
+enmÃ¡Ã«n" mans), Yons..zz
+
+--------
+
+
+[2018-09-28 11:25] Train Step 17100/100000, Batch Size = 64,Accuracy = 0.56, Loss = 1.373
+
+; b PoR. PachÃpiq. Roy nÃ²m, dd
+
+--------
+
+
+[2018-09-28 11:25] Train Step 17200/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.344
+
+Ed's VoyagiaG."
+(UiDork"--DozÃÃ
+
+--------
+
+
+[2018-09-28 11:25] Train Step 17300/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.278
+
+imus ims tubÃqbuis
+begon,
+Acarr
+
+--------
+
+
+[2018-09-28 11:26] Train Step 17400/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.321
+
+zicd wÃ¨Ã«nobuedia." SoÃ«: Ress
+
+--------
+
+
+[2018-09-28 11:26] Train Step 17500/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.293
+
+ 
+1.An. 
+
+*N; Mh
+MWkaip?. Waamm
+
+--------
+
+
+[2018-09-28 11:26] Train Step 17600/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.272
+
+enweegetroeld
+uckleumkeer meddd
+
+--------
+
+
+[2018-09-28 11:26] Train Step 17700/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.329
+
+ootsch,
+KunÃ© Esclust's mochrtt
+
+--------
+
+
+[2018-09-28 11:26] Train Step 17800/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.356
+
+²m
+[922]1
+El,srimpt
+Rorbozw-Poo
+
+--------
+
+
+[2018-09-28 11:26] Train Step 17900/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.246
+
+so) lit, opgesvunden!".
+ »Iyxoo
+
+--------
+
+
+[2018-09-28 11:26] Train Step 18000/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.279
+
+:
+s"dannen; warciketkz,, at. MM
+
+--------
+
+
+[2018-09-28 11:26] Train Step 18100/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.239
+
+am. Hardis), oorsbleven. Gedooo
+
+--------
+
+
+[2018-09-28 11:26] Train Step 18200/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.295
+
+n bewijzen zich met dankbeskunn
+
+--------
+
+
+[2018-09-28 11:26] Train Step 18300/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.392
+
+g; dial
+met har Lekk biz.-280
+
+
+
+--------
+
+
+[2018-09-28 11:26] Train Step 18400/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.314
+
+eervmoestat;
+het?werd xu, vuurr
+
+--------
+
+
+[2018-09-28 11:26] Train Step 18500/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.297
+
+. Iz., doch hetzelfde bans;
+opp
+
+--------
+
+
+[2018-09-28 11:26] Train Step 18600/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.288
+
+acHÃ," laatleght1heb
+beploe
+eee
+
+--------
+
+
+[2018-09-28 11:26] Train Step 18700/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.276
+
+hadd,
+omdrzuibieh hij
+Nat
+aciÃÃ
+
+--------
+
+
+[2018-09-28 11:26] Train Step 18800/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.324
+
+Zoeiduiod-Kortwamer Schecus, mm
+
+--------
+
+
+[2018-09-28 11:27] Train Step 18900/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.309
+
+lakte
+is.
+
+Bij 4.vees woÃv. d..
+
+--------
+
+
+[2018-09-28 11:27] Train Step 19000/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.272
+
+AH; S11L.) venligt vas)--Al 1,,
+
+--------
+
+
+[2018-09-28 11:27] Train Step 19100/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.315
+
+98
+of D.k.z,
+braken,
+gezon af,,
+
+--------
+
+
+[2018-09-28 11:27] Train Step 19200/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.238
+
+'omes 381Â°ÂN'ogue setiVzo)ek..
+
+--------
+
+
+[2018-09-28 11:27] Train Step 19300/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.288
+
+iddpunen
+way krien fameik niett
+
+--------
+
+
+[2018-09-28 11:27] Train Step 19400/100000, Batch Size = 64,Accuracy = 0.62, Loss = 1.221
+
+) onvrag
+Ã¶etdica);
+Ã©Ãveteingg
+
+--------
+
+
+[2018-09-28 11:27] Train Step 19500/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.304
+
+ ik Vaveek-Kucth
+Oseansche lann
+
+--------
+
+
+[2018-09-28 11:27] Train Step 19600/100000, Batch Size = 64,Accuracy = 0.62, Loss = 1.252
+
+tbel lakdes: reusas ligt "dun..
+
+--------
+
+
+[2018-09-28 11:27] Train Step 19700/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.317
+
+iei
+gazat'' West-homaktrepvligg
+
+--------
+
+
+[2018-09-28 11:27] Train Step 19800/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.346
+
+, Nah; m11/dwaklyc. The.imerayy
+
+--------
+
+
+[2018-09-28 11:27] Train Step 19900/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.254
+
+noepagheisheNberHoeknarltstruww
+
+--------
+
+
+[2018-09-28 11:27] Train Step 20000/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.326
+
+ vÃ=Yp owdt 413 golfruari Khagg
+
+--------
+
+
+[2018-09-28 11:27] Train Step 20100/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.270
+
+L.Zuboctivodonavicull.)
+eeft,,,
+
+--------
+
+
+[2018-09-28 11:27] Train Step 20200/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.294
+
+t oek heenhakheekken!
+"Gewiodee
+
+--------
+
+
+[2018-09-28 11:28] Train Step 20300/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.347
+
+aak, ook tw
+ekkenvoold. Ietucaa
+
+--------
+
+
+[2018-09-28 11:28] Train Step 20400/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.322
+
+matulijb, kon, arm
+ze wezemdenn
+
+--------
+
+
+[2018-09-28 11:28] Train Step 20500/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.320
+
+ IÃ¡mina! Wilp. Rup velvork tee
+
+--------
+
+
+[2018-09-28 11:28] Train Step 20600/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.236
+
+phigaur lsod T. VAN Grocuptotoo
+
+--------
+
+
+[2018-09-28 11:28] Train Step 20700/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.289
+
+; in ookst
+van. O'awluwzindrucc
+
+--------
+
+
+[2018-09-28 11:28] Train Step 20800/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.338
+
+go; te
+bereik;). In deaschezijj
+
+--------
+
+
+[2018-09-28 11:28] Train Step 20900/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.305
+
+6)  Ovenveer
+boven-
+postdum, ff
+
+--------
+
+
+[2018-09-28 11:28] Train Step 21000/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.289
+
+ tweede
+gretselpseldeelingen ee
+
+--------
+
+
+[2018-09-28 11:28] Train Step 21100/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.284
+
+ij doos doorwenschaal
+waÃªrksdd
+
+--------
+
+
+[2018-09-28 11:28] Train Step 21200/100000, Batch Size = 64,Accuracy = 0.62, Loss = 1.263
+
+01, en.05885. Maarzhoo zensa-tt
+
+--------
+
+
+[2018-09-28 11:28] Train Step 21300/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.281
+
+]. offeschie opmidrend. IqUrakk
+
+--------
+
+
