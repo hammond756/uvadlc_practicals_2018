@@ -1,0 +1,37 @@
+You are using pip version 9.0.1, however version 18.0 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+Traceback (most recent call last):
+  File "train.py", line 32, in <module>
+    from vanilla_rnn import VanillaRNN
+  File "/home/lgpu0034/uvadlc_practicals_2018/assignment_2/part1/vanilla_rnn.py", line 66
+    return torch.mm(self.h, self.Whp) + self.bp
+                                              ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "train.py", line 32, in <module>
+    from vanilla_rnn import VanillaRNN
+  File "/home/lgpu0034/uvadlc_practicals_2018/assignment_2/part1/vanilla_rnn.py", line 66
+    return torch.mm(self.h, self.Whp) + self.bp
+                                              ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "train.py", line 32, in <module>
+    from vanilla_rnn import VanillaRNN
+  File "/home/lgpu0034/uvadlc_practicals_2018/assignment_2/part1/vanilla_rnn.py", line 66
+    return torch.mm(self.h, self.Whp) + self.bp
+                                              ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "train.py", line 32, in <module>
+    from vanilla_rnn import VanillaRNN
+  File "/home/lgpu0034/uvadlc_practicals_2018/assignment_2/part1/vanilla_rnn.py", line 66
+    return torch.mm(self.h, self.Whp) + self.bp
+                                              ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "train.py", line 32, in <module>
+    from vanilla_rnn import VanillaRNN
+  File "/home/lgpu0034/uvadlc_practicals_2018/assignment_2/part1/vanilla_rnn.py", line 66
+    return torch.mm(self.h, self.Whp) + self.bp
+                                              ^
+IndentationError: unindent does not match any outer indentation level

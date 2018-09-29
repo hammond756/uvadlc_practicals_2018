@@ -1,5 +1,5 @@
 #!/bin/sh
-#PBS -lwalltime=20:00
+#PBS -lwalltime=2:00:00
 #PBS -lnodes=1:ppn=12
 #PBS -lmem=250GB
 
@@ -8,4 +8,7 @@ export LD_LIBRARY_PATH=/hpc/sw/NCCL/2.0.5/lib:/hpc/eb/Debian9/cuDNN/7.0.5-CUDA-9
 
 pip3 install -r ~/uvadlc_practicals_2018/requirements.txt --user --no-cache
 cd ~/uvadlc_practicals_2018/assignment_2/part1/
-python train.py --model_type RNN 
+for T in 5 10 15 20 25
+do
+	python train.py --model_type RNN --input_length $T
+done
