@@ -125,7 +125,7 @@ def train(config):
 
     # TODO: configure learning rate scheduler
 
-    for epoch in range(config.epochs):
+    for epoch in range(1, config.epochs + 1):
         for step, (batch_inputs, batch_targets) in enumerate(data_loader):
 
             # Only for time measurement of step through network
@@ -160,7 +160,7 @@ def train(config):
 
                 print("[{}] Train Step {:04d}/{:04d}, Batch Size = {}, Examples/Sec = {:.2f}, "
                       "Accuracy = {:.2f}, Loss = {:.3f}".format(
-                        datetime.now().strftime("%Y-%m-%d %H:%M"), step,
+                        datetime.now().strftime("%Y-%m-%d %H:%M"), epoch*step,
                         config.train_steps, config.batch_size, examples_per_second,
                         accuracy, loss
                 ))
@@ -168,31 +168,31 @@ def train(config):
                 xp.add_scalar_dict({
                     'accuracy' : accuracy,
                     'loss' : loss.item()
-                }, step=step, wall_time=time.time())
+                }, step=epoch*step, wall_time=time.time())
 
-            if step % config.sample_every == 0:
-                # Generate some sentences by sampling from the model
-                path = os.path.splitext(config.txt_file)[0] + "_generated_samples_" + "temp_" + str(config.temperature) + ".txt"
-                abs_path = os.path.abspath(path)
-                mode = 'a' if step > 0 else 'w'
-                print("---")
-                print("Write sample to ", path)
-                print("---")
+            # if step % config.sample_every == 0:
+            #     # Generate some sentences by sampling from the model
+            #     path = os.path.splitext(config.txt_file)[0] + "_generated_samples_" + "temp_" + str(config.temperature) + ".txt"
+            #     abs_path = os.path.abspath(path)
+            #     mode = 'a' if step > 0 else 'w'
+            #     print("---")
+            #     print("Write sample to ", path)
+            #     print("---")
+            #
+            #     with open(abs_path, mode) as f:
+            #         progress = "[{}] Train Step {:04d}/{:04d}, Batch Size = {}," \
+            #                "Accuracy = {:.2f}, Loss = {:.3f}".format(
+            #             datetime.now().strftime("%Y-%m-%d %H:%M"), step,
+            #             config.train_steps, config.batch_size, accuracy, loss)
+            #
+            #         generated_sequence = sample_model(model, dataset.vocab_size, device=device, temp=config.temperature, n=config.generate_n)
+            #         sample = string_from_one_hot(generated_sequence, dataset)
+            #
+            #         f.write(progress + '\n\n')
+            #         f.write(sample)
+            #         f.write('\n\n--------\n\n\n')
 
-                with open(abs_path, mode) as f:
-                    progress = "[{}] Train Step {:04d}/{:04d}, Batch Size = {}," \
-                           "Accuracy = {:.2f}, Loss = {:.3f}".format(
-                        datetime.now().strftime("%Y-%m-%d %H:%M"), step,
-                        config.train_steps, config.batch_size, accuracy, loss)
-
-                    generated_sequence = sample_model(model, dataset.vocab_size, device=device, temp=config.temperature, n=config.generate_n)
-                    sample = string_from_one_hot(generated_sequence, dataset)
-
-                    f.write(progress + '\n\n')
-                    f.write(sample)
-                    f.write('\n\n--------\n\n\n')
-
-            torch.save(model, 'grimm/grimm_epoch_{}.pt'.format(epoch + 1))
+            torch.save(model, 'grimm/grimm_epoch_{}.pt'.format(epoch))
 
     _ = xp.to_zip(experiment_label + ".zip")
     print('Done training.')
