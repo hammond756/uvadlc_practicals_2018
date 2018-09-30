@@ -156,7 +156,7 @@ def train(config):
                         accuracy, loss
                 ))
 
-            torch.save(model, 'grimm/grimm_epoch_{}.pt'.format(epoch))
+        torch.save(model, 'grimm/grimm_epoch_{}.pt'.format(epoch))
 
     # _ = xp.to_zip(experiment_label + ".zip")
     print('Done training.')
