@@ -46,12 +46,8 @@ def one_hot(batch, vocab_size):
 def sample_output(output, temperature=1.0):
     # helper function to sample an index from a probability array
 
-    output = torch.softmax(output, dim=1)
-
-    a = torch.log(output) / temperature
-    a = torch.exp(a) / (torch.exp(a).sum())
-
-    sample = torch.multinomial(a, 1)
+    output = torch.softmax(output, dim=1).type(torch.float64) / temperaturex
+    sample = torch.multinomial(output, 1)
 
     return sample
 
