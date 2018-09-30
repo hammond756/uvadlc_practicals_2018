@@ -39,6 +39,13 @@ from pycrayon import CrayonClient
 
 ################################################################################
 
+def one_hot(batch, vocab_size):
+
+    X = torch.zeros(batch.shape[0], batch.shape[1], vocab_size, device=batch.device)
+    X.scatter_(2, batch[:,:,None], 1)
+
+    return X
+
 def get_predictions(outputs):
     return torch.argmax(nn.functional.softmax(outputs, dim=1), dim=1)
 
@@ -83,6 +90,9 @@ def train(config):
 
         # Only for time measurement of step through network
         t1 = time.time()
+
+        if config.input_dim == 10:
+            batch_inputs = one_hot(batch_inputs.type(torch.long), config.input_dim)
 
         p = model(batch_inputs)
 

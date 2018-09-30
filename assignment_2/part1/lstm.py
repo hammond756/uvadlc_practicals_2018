@@ -62,6 +62,8 @@ class LSTM(nn.Module):
         self.num_classes = num_classes
         self.batch_size = batch_size
 
+        self.to(device)
+
     def forward(self, x):
 
         # initialize cell state
@@ -69,11 +71,11 @@ class LSTM(nn.Module):
         h = torch.zeros(self.batch_size, self.num_hidden)
 
         for t in range(self.seq_length):
-            # convert input at time (t) to one-hot vector. only makes sense
-            # of input_dim == num_classes
-            x_t_emb = x[:, t].view(-1, 1).type(torch.long)
-            x_t = torch.zeros(self.batch_size, self.input_dim)
-            x_t.scatter_(1, x_t_emb, 1)
+
+            if self.input_dim == 1:
+                x_t = x[:, t].view(-1, 1)
+            elif self.input_dim == self.num_classes:
+                x_t = x[:, t, :]
 
             # modulation gate
             g = torch.mm(x_t, self.W_xg) + torch.mm(h, self.W_hg) + self.b_g

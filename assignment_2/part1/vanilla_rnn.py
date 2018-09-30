@@ -46,17 +46,18 @@ class VanillaRNN(nn.Module):
         self.batch_size = batch_size
         self.input_dim = input_dim
 
+        self.to(device)
+
     def forward(self, x):
 
         self.h = torch.zeros(self.batch_size, self.num_hidden)
 
         for t in range(self.seq_length):
 
-            # convert input at time (t) to one-hot vector. only makes sense
-            # of input_dim == num_classes
-            x_t_emb = x[:, t].view(-1, 1).type(torch.long)
-            x_t = torch.zeros(self.batch_size, self.input_dim)
-            x_t.scatter_(1, x_t_emb, 1)
+            if self.input_dim == 10:
+                x_t = x[:, t, :]
+            elif self.input_dim == 1:
+                x_t = x[:, t].view(-1, 1)
 
             # compute hidden state
             self.h = torch.mm(x_t, self.Wxh) + torch.mm(self.h, self.Whh) + self.bh
