@@ -180,12 +180,12 @@ def show(img):
     plt.imshow(npimg.transpose(1,2,0), interpolation='nearest')
 
 def save(img, title="grid.jpg"):
-    npimg = img.numpy()
+    npimg = img.cpu().numpy()
     plt.imsave(title, npimg.transpose(1,2,0))
 
 def main(config):
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-
+    print(f"RUNNING ON {device}")
     data = bmnist()[:2]  # ignore test split
     model = VAE(z_dim=config.zdim, device=device)
     model.to(device)
@@ -207,7 +207,7 @@ def main(config):
         with torch.no_grad():
             samples, im_means = model.sample(9)
             samples = make_grid(samples, nrow=3)
-            save(samples, title=f"samples_epoch_{epoch}_train_{train_elbo:.2f}_val_{val_elbo:.2f}")
+            save(samples, title=f"samples_epoch_{epoch}_train_{train_elbo:.2f}_val_{val_elbo:.2f}.jpg")
 
     # --------------------------------------------------------------------
     #  Add functionality to plot plot the learned data manifold after
