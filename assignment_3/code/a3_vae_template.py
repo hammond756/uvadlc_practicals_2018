@@ -2,16 +2,31 @@ import argparse
 
 import torch
 import torch.nn as nn
+import numpy as np
 import matplotlib.pyplot as plt
 from torchvision.utils import make_grid
 
 from datasets.bmnist import bmnist
 
+ARGS = {}
 
 class Encoder(nn.Module):
 
     def __init__(self, hidden_dim=500, z_dim=20):
         super().__init__()
+
+        self.mean_net = nn.Sequential(
+            nn.Linear(784, hidden_dim),
+            nn.ReLU(),
+            nn.Linear(hidden_dim, z_dim),
+            nn.Sigmoid()
+        )
+        self.std_net = nn.Sequential(
+            nn.Linear(784, hidden_dim),
+            nn.ReLU(),
+            nn.Linear(hidden_dim, z_dim),
+            nn.Sigmoid()
+        )
 
     def forward(self, input):
         """
@@ -20,9 +35,7 @@ class Encoder(nn.Module):
         Returns mean and std with shape [batch_size, z_dim]. Make sure
         that any constraints are enforced.
         """
-        mean, std = None, None
-        raise NotImplementedError()
-
+        mean, std = self.mean_net(input), self.std_net(input)
         return mean, std
 
 
@@ -31,34 +44,68 @@ class Decoder(nn.Module):
     def __init__(self, hidden_dim=500, z_dim=20):
         super().__init__()
 
+        self.decoder_net = nn.Sequential(
+            nn.Linear(z_dim, hidden_dim),
+            nn.ReLU(),
+            nn.Linear(hidden_dim, 784),
+            nn.Sigmoid()
+        )
+
+
     def forward(self, input):
         """
         Perform forward pass of encoder.
 
         Returns mean with shape [batch_size, 784].
         """
-        mean = None
-        raise NotImplementedError()
-
+        mean = self.decoder_net(input)
         return mean
 
 
 class VAE(nn.Module):
 
-    def __init__(self, hidden_dim=500, z_dim=20):
+    def __init__(self, hidden_dim=500, z_dim=20, device='cpu'):
         super().__init__()
 
         self.z_dim = z_dim
         self.encoder = Encoder(hidden_dim, z_dim)
         self.decoder = Decoder(hidden_dim, z_dim)
 
+        self.device = device
+        self.to(device)
+
+    def reparameterize(self, mean, std):
+
+        # TODO: check if randn_like behaves differently than MultivariateNormal.sample
+        eps = torch.randn((1, self.z_dim)).to(self.device)
+        return mean + torch.mul(std, eps)
+
+    def recon_loss(self, input, output):
+
+        pos = torch.mul(input, torch.log(output))
+        neg = torch.mul(1 - input, torch.log(1 - output))
+
+        return -torch.sum(pos + neg, dim=1)
+
+    def reg_loss(self, mu, std):
+        return -0.5 * torch.sum(1 + torch.log(std.pow(2)) - mu.pow(2) - std.pow(2))
+
     def forward(self, input):
         """
         Given input, perform an encoding and decoding step and return the
         negative average elbo for the given batch.
         """
-        average_negative_elbo = None
-        raise NotImplementedError()
+
+        input = input.view(-1, 784).to(self.device)
+
+        mean, std = self.encoder(input)
+        z = self.reparameterize(mean, std)
+        output = self.decoder(z)
+
+        reg_loss = self.reg_loss(mean, std)
+        recon_loss = self.recon_loss(input, output)
+
+        average_negative_elbo = torch.mean(reg_loss + recon_loss, dim=0)
         return average_negative_elbo
 
     def sample(self, n_samples):
@@ -67,8 +114,14 @@ class VAE(nn.Module):
         (from bernoulli) and the means for these bernoullis (as these are
         used to plot the data manifold).
         """
-        sampled_ims, im_means = None, None
-        raise NotImplementedError()
+        sampled_ims = []
+        im_means = []
+        eps = torch.randn((n_samples, self.z_dim)).to(self.device)
+        sampled_ims = self.decoder(eps)
+        im_means = sampled_ims.mean(dim=0)
+
+        shape = (-1, 1, 28, 28)
+        sampled_ims, im_means = sampled_ims.view(shape), im_means.view(shape)
 
         return sampled_ims, im_means
 
@@ -80,10 +133,20 @@ def epoch_iter(model, data, optimizer):
 
     Returns the average elbo for the complete epoch.
     """
-    average_epoch_elbo = None
-    raise NotImplementedError()
 
-    return average_epoch_elbo
+    avg_epoch_elbo = 0
+
+    for n, batch in enumerate(data):
+
+        avg_elbo = model(batch)
+
+        model.zero_grad()
+        avg_elbo.backward()
+        optimizer.step()
+
+        avg_epoch_elbo = avg_epoch_elbo + (avg_elbo.item() - avg_epoch_elbo) / (n + 1)
+
+    return avg_epoch_elbo
 
 
 def run_epoch(model, data, optimizer):
@@ -111,24 +174,40 @@ def save_elbo_plot(train_curve, val_curve, filename):
     plt.tight_layout()
     plt.savefig(filename)
 
+def show(img):
+    npimg = img.numpy()
+    plt.figure()
+    plt.imshow(npimg.transpose(1,2,0), interpolation='nearest')
 
-def main():
+def save(img, title="grid.jpg"):
+    npimg = img.numpy()
+    plt.imsave(title, npimg.transpose(1,2,0))
+
+def main(config):
+    device = 'cuda' if torch.cuda.is_available() else 'cpu'
+
     data = bmnist()[:2]  # ignore test split
-    model = VAE(z_dim=ARGS.zdim)
+    model = VAE(z_dim=config.zdim, device=device)
+    model.to(device)
     optimizer = torch.optim.Adam(model.parameters())
 
     train_curve, val_curve = [], []
-    for epoch in range(ARGS.epochs):
+    for epoch in range(config.epochs):
         elbos = run_epoch(model, data, optimizer)
         train_elbo, val_elbo = elbos
         train_curve.append(train_elbo)
         val_curve.append(val_elbo)
+
         print(f"[Epoch {epoch}] train elbo: {train_elbo} val_elbo: {val_elbo}")
 
         # --------------------------------------------------------------------
         #  Add functionality to plot samples from model during training.
         #  You can use the make_grid functioanlity that is already imported.
         # --------------------------------------------------------------------
+        with torch.no_grad():
+            samples, im_means = model.sample(9)
+            samples = make_grid(samples, nrow=3)
+            save(samples, title=f"samples_epoch_{epoch}_train_{train_elbo:.2f}_val_{val_elbo:.2f}")
 
     # --------------------------------------------------------------------
     #  Add functionality to plot plot the learned data manifold after
@@ -148,4 +227,4 @@ if __name__ == "__main__":
 
     ARGS = parser.parse_args()
 
-    main()
+    main(ARGS)
