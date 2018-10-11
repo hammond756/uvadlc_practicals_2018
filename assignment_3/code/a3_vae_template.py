@@ -147,9 +147,10 @@ def epoch_iter(model, data, optimizer):
 
         avg_elbo = model(batch)
 
-        model.zero_grad()
-        avg_elbo.backward()
-        optimizer.step()
+        if model.training:
+            model.zero_grad()
+            avg_elbo.backward()
+            optimizer.step()
 
         avg_epoch_elbo = avg_epoch_elbo + (avg_elbo.item() - avg_epoch_elbo) / (n + 1)
 
