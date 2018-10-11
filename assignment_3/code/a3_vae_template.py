@@ -21,14 +21,12 @@ class Encoder(nn.Module):
         self.mean_net = nn.Sequential(
             nn.Linear(784, hidden_dim),
             nn.ReLU(),
-            nn.Linear(hidden_dim, z_dim),
-            nn.Sigmoid()
+            nn.Linear(hidden_dim, z_dim)
         )
         self.std_net = nn.Sequential(
             nn.Linear(784, hidden_dim),
             nn.ReLU(),
-            nn.Linear(hidden_dim, z_dim),
-            nn.Sigmoid()
+            nn.Linear(hidden_dim, z_dim)
         )
 
     def forward(self, input):
