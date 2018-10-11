@@ -1,13 +1,13 @@
 [2018-09-28 11:13] Train Step 0000/100000, Batch Size = 64,Accuracy = 0.00, Loss = 4.748
 
-Kº=!yW¯q.8Â-6e±l4yuQ*»‰¨ºj-bB±±
+Kï¿½=!yWï¿½q.8ï¿½-6eï¿½l4yuQ*ï¿½ï¿½ï¿½ï¿½j-bBï¿½ï¿½
 
 --------
 
 
 [2018-09-28 11:13] Train Step 0100/100000, Batch Size = 64,Accuracy = 0.15, Loss = 3.107
 
-r Vr erTWs.-5llt©6kewwkwowhnii
+r Vr erTWs.-5lltï¿½ï¿½6kewwkwowhnii
 
 --------
 
@@ -16,7 +16,7 @@ r Vr erTWs.-5llt©6kewwkwowhnii
 
 telan 
 (ckinotb.;we
-‹pdoe bo
+ï¿½pdoe bo
 DD
 
 --------
@@ -25,21 +25,21 @@ DD
 [2018-09-28 11:14] Train Step 0300/100000, Batch Size = 64,Accuracy = 0.37, Loss = 2.236
 
 wer Btephs
-emaCin Hlvo  cSO©KK
+emaCin Hlvoï¿½  cSOï¿½KK
 
 --------
 
 
 [2018-09-28 11:14] Train Step 0400/100000, Batch Size = 64,Accuracy = 0.41, Loss = 2.067
 
-G¿9Aven aadtwefe dt,. deiNpo;ss
+Gï¿½9Aven aadtwefe dt,. deiNpo;ss
 
 --------
 
 
 [2018-09-28 11:14] Train Step 0500/100000, Batch Size = 64,Accuracy = 0.41, Loss = 1.960
 
-L: ZK.S©yalioak,. SLomd,eIfet  
+L: ZK.Sï¿½yalioak,. SLomd,eIfet  
 
 --------
 
@@ -47,14 +47,14 @@ L: ZK.S©yalioak,. SLomd,eIfet
 [2018-09-28 11:14] Train Step 0600/100000, Batch Size = 64,Accuracy = 0.44, Loss = 1.905
 
 s)heldin wam deg
-geeÃEadm zegee
+geeï¿½Eadm zegee
 
 --------
 
 
 [2018-09-28 11:14] Train Step 0700/100000, Batch Size = 64,Accuracy = 0.46, Loss = 1.859
 
-lÃjaduiddamevr. Afgemens  A° tt
+lï¿½jaduiddamevr. Afgemens  Aï¿½ tt
 
 --------
 
@@ -80,7 +80,7 @@ brap.. D:
 
 ,
 ik
- y8,2'y ettrvoÃ>uvictlosuu
+ y8,2'y ettrvoï¿½>uvictlosuu
 
 --------
 
@@ -96,7 +96,7 @@ J.bsp :wtimioqseelipp
 [2018-09-28 11:14] Train Step 1200/100000, Batch Size = 64,Accuracy = 0.51, Loss = 1.685
 
 nu; mal;-6pkonin
-yobelemrrÃkt  
+yobelemrrï¿½kt  
 
 --------
 
@@ -122,21 +122,21 @@ is:
 
 #p erer..
 TZ[5
-Â7* wlbrworyÃ©ii
+ï¿½7* wlbrworyÃ©ii
 
 --------
 
 
 [2018-09-28 11:14] Train Step 1600/100000, Batch Size = 64,Accuracy = 0.50, Loss = 1.681
 
-©boucom'sze:) houth. Zendeert;;
+ï¿½boucom'sze:) houth. Zendeert;;
 
 --------
 
 
 [2018-09-28 11:15] Train Step 1700/100000, Batch Size = 64,Accuracy = 0.51, Loss = 1.661
 
-, T9BDUvbTXuAQS-liM9YAatta, Â""
+, T9BDUvbTXuAQS-liM9YAatta, ï¿½""
 
 --------
 
@@ -160,7 +160,7 @@ unt,, myy
 
 [2018-09-28 11:15] Train Step 2000/100000, Batch Size = 64,Accuracy = 0.54, Loss = 1.558
 
-age land, dabtingsecgvisg-¨venn
+age land, dabtingsecgvisg-ï¿½venn
 
 --------
 
@@ -214,7 +214,7 @@ nnis in, manar By=gppusgy--ditt
 
 [2018-09-28 11:15] Train Step 2700/100000, Batch Size = 64,Accuracy = 0.54, Loss = 1.538
 
-obilly,; ©7 
+obilly,; ï¿½7 
 Ble-cvoode lee,vaa
 
 --------
@@ -246,8 +246,8 @@ gsd. Dnachopvriey-Hw*eidwoede
 
 [2018-09-28 11:16] Train Step 3100/100000, Batch Size = 64,Accuracy = 0.55, Loss = 1.496
 
-t, wÃZm
-merkemry reen. BaaddwÃÃ
+t, wï¿½Zm
+merkemry reen. Baaddwï¿½ï¿½
 
 --------
 
@@ -255,7 +255,7 @@ merkemry reen. BaaddwÃÃ
 [2018-09-28 11:16] Train Step 3200/100000, Batch Size = 64,Accuracy = 0.52, Loss = 1.640
 
 0-O/in
-¯ugec:boor's elsazd niee
+ï¿½ugec:boor's elsazd niee
 
 --------
 
@@ -263,14 +263,14 @@ merkemry reen. BaaddwÃÃ
 [2018-09-28 11:16] Train Step 3300/100000, Batch Size = 64,Accuracy = 0.55, Loss = 1.495
 
 
-aÃQkwafs-Â¯dlichta epenkbaartt
+aï¿½Qkwafs-Â¯dlichta epenkbaartt
 
 --------
 
 
 [2018-09-28 11:16] Train Step 3400/100000, Batch Size = 64,Accuracy = 0.55, Loss = 1.543
 
-'G-SfH*kAT ÂMLE*EFRNL
+'G-SfH*kAT ï¿½MLE*EFRNL
 HEhTISSpp
 
 --------
@@ -309,7 +309,7 @@ gtt, eene ip vurdeelij gevÃ³rZZ
 
 [2018-09-28 11:16] Train Step 3900/100000, Batch Size = 64,Accuracy = 0.56, Loss = 1.438
 
-ªpekt, moeptuurtegede vuudenzoo
+ï¿½pekt, moeptuurtegede vuudenzoo
 
 --------
 
@@ -483,7 +483,7 @@ in keppets"ripp
 
 )-.,-47 Jauggems.
 
-(©Ã³E snijff
+(ï¿½Ã³E snijff
 
 --------
 
@@ -491,7 +491,7 @@ in keppets"ripp
 [2018-09-28 11:18] Train Step 6200/100000, Batch Size = 64,Accuracy = 0.56, Loss = 1.429
 
 phlat;
-inda, doch zi³vouhe iddd
+inda, doch ziï¿½vouhe iddd
 
 --------
 
@@ -651,7 +651,7 @@ waar zoophua'blevenss
 
 [2018-09-28 11:19] Train Step 8200/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.360
 
-rismodes] MÃxyei) zijn: zoodigg
+rismodes] Mï¿½xyei) zijn: zoodigg
 
 --------
 
@@ -700,7 +700,7 @@ oorm), dicht;
 
 ijlt,
 had bolt
-dit3, met spoÃ¯¯
+dit3, met spoÃ¯ï¿½
 
 --------
 
@@ -736,7 +736,7 @@ ue Faus-Nardi-bek cnurrond matt
 
 [2018-09-28 11:20] Train Step 9300/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.394
 
-EVDGENMERH.l¶aacos0,
+EVDGENMERH.lï¿½aacos0,
 Tindsbyuuu
 
 --------
@@ -753,7 +753,7 @@ S vrela's, majppatelje; mtcatii
 
 kunt
 is bigwaardzels. Zoo
-AzÃ³³
+AzÃ³ï¿½
 
 --------
 
@@ -843,7 +843,7 @@ zij
 
 [2018-09-28 11:21] Train Step 10600/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.330
 
-Â!6'9 methui.;
+ï¿½!6'9 methui.;
 kus--ekelven, PP
 
 --------
@@ -902,7 +902,7 @@ maar
 [2018-09-28 11:21] Train Step 11300/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.356
 
 5 jonge wwn:
-' D¡, teze Rolschh
+' Dï¿½, teze Rolschh
 
 --------
 
@@ -941,7 +941,7 @@ vijapbroo
 [2018-09-28 11:22] Train Step 11800/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.296
 
 ruidte. Deelolgsel,
-Innar. BÃ44
+Innar. Bï¿½44
 
 --------
 
@@ -988,7 +988,7 @@ coWreiRbborff
 
 [2018-09-28 11:22] Train Step 12400/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.328
 
-Â.o)c")). Gom
+ï¿½.o)c")). Gom
 
 If Natref); ahaa
 
@@ -1004,7 +1004,7 @@ If Natref); ahaa
 
 [2018-09-28 11:22] Train Step 12600/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.314
 
-kele zijkkamÃgilitmblerkseer.
+kele zijkkamï¿½gilitmblerkseer.
 
 
 
@@ -1014,7 +1014,7 @@ kele zijkkamÃgilitmblerkseer.
 [2018-09-28 11:22] Train Step 12700/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.375
 
 agch reevervan
-te BleiÂ"
+te Bleiï¿½"
 
 Plazz
 
@@ -1023,7 +1023,7 @@ Plazz
 
 [2018-09-28 11:22] Train Step 12800/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.348
 
-3¨fgevruchten;
+3ï¿½fgevruchten;
 giede Onthokf oo
 
 --------
@@ -1047,7 +1047,7 @@ ms ValceIIqqukbijnve.-nesgedevv
 [2018-09-28 11:23] Train Step 13100/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.326
 
 1375]
-He landoniÃvanhoudgen.;  
+He landoniï¿½vanhoudgen.;  
 
 --------
 
@@ -1098,7 +1098,7 @@ inos betaomtacoÃ«n vervull"is,,
 [2018-09-28 11:23] Train Step 13800/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.286
 
 ). Dhipg wat:
- ect y; P.ÂcaTorr
+ ect y; P.ï¿½caTorr
 
 --------
 
@@ -1175,7 +1175,7 @@ ago,"Theore a in
 
 [2018-09-28 11:24] Train Step 14800/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.316
 
-¨g; en "Ka.d.
+ï¿½g; en "Ka.d.
 
 
 
@@ -1200,7 +1200,7 @@ ago,"Theore a in
 
 [2018-09-28 11:24] Train Step 15100/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.374
 
-«n
+ï¿½n
 uwa,
 J, just"--erf"by
 lharss
@@ -1292,7 +1292,7 @@ pympp
 
 [2018-09-28 11:25] Train Step 16200/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.332
 
-ÂV) by-FUpuekon gepaagklang vee
+ï¿½V) by-FUpuekon gepaagklang vee
 
 --------
 
@@ -1329,7 +1329,7 @@ koeer, onze een nieuww
 
 [2018-09-28 11:25] Train Step 16700/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.346
 
-lz. t ZÃOk,
+lz. t Zï¿½Ok,
 had
 zij oe-sbeur?  
 
@@ -1363,7 +1363,7 @@ enmÃ¡Ã«n" mans), Yons..zz
 
 [2018-09-28 11:25] Train Step 17100/100000, Batch Size = 64,Accuracy = 0.56, Loss = 1.373
 
-; b PoR. PachÃpiq. Roy nÃ²m, dd
+; b PoR. Pachï¿½piq. Roy nÃ²m, dd
 
 --------
 
@@ -1371,14 +1371,14 @@ enmÃ¡Ã«n" mans), Yons..zz
 [2018-09-28 11:25] Train Step 17200/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.344
 
 Ed's VoyagiaG."
-(UiDork"--DozÃÃ
+(UiDork"--Dozï¿½ï¿½
 
 --------
 
 
 [2018-09-28 11:25] Train Step 17300/100000, Batch Size = 64,Accuracy = 0.59, Loss = 1.278
 
-imus ims tubÃqbuis
+imus ims tubï¿½qbuis
 begon,
 Acarr
 
@@ -1421,7 +1421,7 @@ KunÃ© Esclust's mochrtt
 
 [2018-09-28 11:26] Train Step 17800/100000, Batch Size = 64,Accuracy = 0.57, Loss = 1.356
 
-²m
+ï¿½m
 [922]1
 El,srimpt
 Rorbozw-Poo
@@ -1432,7 +1432,7 @@ Rorbozw-Poo
 [2018-09-28 11:26] Train Step 17900/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.246
 
 so) lit, opgesvunden!".
- »Iyxoo
+ ï¿½Iyxoo
 
 --------
 
@@ -1487,7 +1487,7 @@ opp
 
 [2018-09-28 11:26] Train Step 18600/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.288
 
-acHÃ," laatleght1heb
+acHï¿½," laatleght1heb
 beploe
 eee
 
@@ -1499,7 +1499,7 @@ eee
 hadd,
 omdrzuibieh hij
 Nat
-aciÃÃ
+aciï¿½ï¿½
 
 --------
 
@@ -1516,7 +1516,7 @@ Zoeiduiod-Kortwamer Schecus, mm
 lakte
 is.
 
-Bij 4.vees woÃv. d..
+Bij 4.vees woï¿½v. d..
 
 --------
 
@@ -1540,7 +1540,7 @@ gezon af,,
 
 [2018-09-28 11:27] Train Step 19200/100000, Batch Size = 64,Accuracy = 0.61, Loss = 1.238
 
-'omes 381Â°ÂN'ogue setiVzo)ek..
+'omes 381Â°ï¿½N'ogue setiVzo)ek..
 
 --------
 
@@ -1557,7 +1557,7 @@ way krien fameik niett
 
 ) onvrag
 Ã¶etdica);
-Ã©Ãveteingg
+Ã©ï¿½veteingg
 
 --------
 
@@ -1601,7 +1601,7 @@ noepagheisheNberHoeknarltstruww
 
 [2018-09-28 11:27] Train Step 20000/100000, Batch Size = 64,Accuracy = 0.58, Loss = 1.326
 
- vÃ=Yp owdt 413 golfruari Khagg
+ vï¿½=Yp owdt 413 golfruari Khagg
 
 --------
 
@@ -1616,8 +1616,7 @@ eeft,,,
 
 [2018-09-28 11:27] Train Step 20200/100000, Batch Size = 64,Accuracy = 0.60, Loss = 1.294
 
-t oek heenhakheekken!
-"Gewiodee
+
 
 --------
 
