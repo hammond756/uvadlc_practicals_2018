@@ -82,13 +82,14 @@ class VAE(nn.Module):
 
     def recon_loss(self, input, output):
 
-        pos = torch.mul(input, torch.log(output))
-        neg = torch.mul(1 - input, torch.log(1 - output))
+        stb = 1e-6
+        pos = torch.mul(input, torch.log(output + stb))
+        neg = torch.mul(1 - input, torch.log(1 - output + stb))
 
         return -torch.sum(pos + neg, dim=1)
 
     def reg_loss(self, mu, std):
-        return -0.5 * torch.sum(1 + torch.log(std.pow(2)) - mu.pow(2) - std.pow(2))
+        return -0.5 * torch.sum(1 + torch.log(std.pow(2)) - mu.pow(2) - std.pow(2), dim=1)
 
     def forward(self, input):
         """
@@ -96,15 +97,19 @@ class VAE(nn.Module):
         negative average elbo for the given batch.
         """
 
+        # transform input into matrix of vectors [Batch, 784]
         input = input.view(-1, 784).to(self.device)
 
+        # full pass
         mean, std = self.encoder(input)
         z = self.reparameterize(mean, std)
         output = self.decoder(z)
 
+        # calculate each part of the loss
         reg_loss = self.reg_loss(mean, std)
         recon_loss = self.recon_loss(input, output)
 
+        # avarage over batch
         average_negative_elbo = torch.mean(reg_loss + recon_loss, dim=0)
         return average_negative_elbo
 
@@ -114,8 +119,7 @@ class VAE(nn.Module):
         (from bernoulli) and the means for these bernoullis (as these are
         used to plot the data manifold).
         """
-        sampled_ims = []
-        im_means = []
+        
         eps = torch.randn((n_samples, self.z_dim)).to(self.device)
         sampled_ims = self.decoder(eps)
         im_means = sampled_ims.mean(dim=0)
