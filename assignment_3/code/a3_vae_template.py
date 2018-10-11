@@ -234,7 +234,6 @@ def main(config):
 
         torch.save(model, f'{ARGS.output_dir}/model_epoch_{ARGS.epochs}.pt')
 
-        break
 
     # --------------------------------------------------------------------
     #  Add functionality to plot plot the learned data manifold after
@@ -244,8 +243,8 @@ def main(config):
     if ARGS.zdim == 2:
         with torch.no_grad():
             N = 25
-            manifold = generate_manifold(model, torch.linspace(-3, 3, N))
-            image = make_grid(manifold, nrows=N)
+            manifold = generate_manifold(model.cpu(), torch.linspace(-3, 3, N))
+            image = make_grid(manifold, nrow=N)
             save(image, f'{ARGS.output_dir}/manifold.jpg')
 
     save_elbo_plot(train_curve, val_curve, f'{ARGS.output_dir}/elbo.pdf')
