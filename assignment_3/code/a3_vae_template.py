@@ -3,6 +3,8 @@ import argparse
 import torch
 import torch.nn as nn
 import numpy as np
+import matplotlib
+matplotlib.use('Agg') # save images without DISPLAY variable (on LISA)
 import matplotlib.pyplot as plt
 from torchvision.utils import make_grid
 
@@ -119,7 +121,7 @@ class VAE(nn.Module):
         (from bernoulli) and the means for these bernoullis (as these are
         used to plot the data manifold).
         """
-        
+
         eps = torch.randn((n_samples, self.z_dim)).to(self.device)
         sampled_ims = self.decoder(eps)
         im_means = sampled_ims.mean(dim=0)
