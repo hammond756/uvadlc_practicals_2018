@@ -4,6 +4,7 @@ import torch
 import torch.nn as nn
 import numpy as np
 import matplotlib
+import os
 matplotlib.use('Agg') # save images without DISPLAY variable (on LISA)
 import matplotlib.pyplot as plt
 from torchvision.utils import make_grid
@@ -180,18 +181,34 @@ def save_elbo_plot(train_curve, val_curve, filename):
     plt.tight_layout()
     plt.savefig(filename)
 
-def show(img):
-    npimg = img.numpy()
-    plt.figure()
-    plt.imshow(npimg.transpose(1,2,0), interpolation='nearest')
-
-def save(img, title="grid.jpg"):
+def save(img, path):
     npimg = img.cpu().numpy()
-    plt.imsave(title, npimg.transpose(1,2,0))
+    plt.imsave(path, npimg.transpose(1,2,0))
+
+def generate_manifold(model, range):
+
+    manifold = []
+    for x in range:
+        for y in range:
+            manifold.append(torch.tensor([x,y]))
+
+    manifold = torch.stack(manifold)
+    samples = model.decoder(manifold)
+    samples = samples.view(-1, 1, 28, 28)
+
+    return samples
 
 def main(config):
+
+    # create directory for output files (images, graphs and model)
+    if not os.path.exists(ARGS.output_dir):
+        os.makedirs(ARGS.output_dir)
+
+    # check if GPU is available
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     print(f"RUNNING ON {device}")
+
+    # load data and configure model
     data = bmnist()[:2]  # ignore test split
     model = VAE(z_dim=config.zdim, device=device)
     model.to(device)
@@ -213,15 +230,25 @@ def main(config):
         with torch.no_grad():
             samples, im_means = model.sample(9)
             samples = make_grid(samples, nrow=3)
-            save(samples, title=f"samples_epoch_{epoch}_train_{train_elbo:.2f}_val_{val_elbo:.2f}.jpg")
+            save(samples, path=f"{ARGS.output_dir}/samples_epoch_{epoch}_train_{train_elbo:.2f}_val_{val_elbo:.2f}.jpg")
+
+        torch.save(model, f'{ARGS.output_dir}/model_epoch_{ARGS.epochs}.pt')
+
+        break
 
     # --------------------------------------------------------------------
     #  Add functionality to plot plot the learned data manifold after
     #  if required (i.e., if zdim == 2). You can use the make_grid
     #  functionality that is already imported.
     # --------------------------------------------------------------------
+    if ARGS.zdim == 2:
+        with torch.no_grad():
+            N = 25
+            manifold = generate_manifold(model, torch.linspace(-3, 3, N))
+            image = make_grid(manifold, nrows=N)
+            save(image, f'{ARGS.output_dir}/manifold.jpg')
 
-    save_elbo_plot(train_curve, val_curve, 'elbo.pdf')
+    save_elbo_plot(train_curve, val_curve, f'{ARGS.output_dir}/elbo.pdf')
 
 
 if __name__ == "__main__":
@@ -230,6 +257,8 @@ if __name__ == "__main__":
                         help='max number of epochs')
     parser.add_argument('--zdim', default=20, type=int,
                         help='dimensionality of latent space')
+    parser.add_argument('--output_dir', default='output', type=str,
+                        help='(Relative) path of output directory. Will be created of it doens\'t exist')
 
     ARGS = parser.parse_args()
 
