@@ -234,7 +234,6 @@ def main(config):
 
         torch.save(model, f'{ARGS.output_dir}/model_epoch_{ARGS.epochs}.pt')
 
-        break
 
     # --------------------------------------------------------------------
     #  Add functionality to plot plot the learned data manifold after
