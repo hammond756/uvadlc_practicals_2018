@@ -184,19 +184,6 @@ def save(img, path):
     npimg = img.cpu().numpy()
     plt.imsave(path, npimg.transpose(1,2,0))
 
-def generate_manifold(model, range):
-
-    manifold = []
-    for x in range:
-        for y in range:
-            manifold.append(torch.tensor([x,y]))
-
-    manifold = torch.stack(manifold)
-    samples = model.decoder(manifold)
-    samples = samples.view(-1, 1, 28, 28)
-
-    return samples
-
 def main(config):
 
     # create directory for output files (images, graphs and model)
