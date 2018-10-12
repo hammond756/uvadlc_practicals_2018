@@ -9,7 +9,7 @@ from torchvision import datasets
 
 
 class Generator(nn.Module):
-    def __init__(self):
+    def __init__(self, latent_dim):
         super(Generator, self).__init__()
 
         # Construct generator. You are free to experiment with your model,
@@ -27,10 +27,25 @@ class Generator(nn.Module):
         #   LeakyReLU(0.2)
         #   Linear 1024 -> 768
         #   Output non-linearity
+        self.net = nn.Sequential(
+            nn.Linear(latent_dim, 128),
+            nn.LeakyReLU(0.2),
+            nn.Linear(128, 256),
+            nn.BatchNorm1d(256),
+            nn.LeakyReLU(0.2),
+            nn.Linear(256, 512),
+            nn.BatchNorm1d(512),
+            nn.LeakyReLU(0.2),
+            nn.Linear(512, 1024),
+            nn.BatchNorm1d(1024),
+            nn.LeakyReLU(0.2),
+            nn.Linear(1024, 784),
+            nn.Sigmoid()
+        )
 
     def forward(self, z):
         # Generate images from z
-        pass
+        return self.net(z)
 
 
 class Discriminator(nn.Module):
@@ -45,24 +60,63 @@ class Discriminator(nn.Module):
         #   LeakyReLU(0.2)
         #   Linear 256 -> 1
         #   Output non-linearity
+        self.net = nn.Sequential(
+            nn.Linear(784, 512),
+            nn.LeakyReLU(0.2),
+            nn.Linear(512, 256),
+            nn.LeakyReLU(0.2),
+            nn.Linear(256, 1),
+            nn.Sigmoid()
+        )
 
     def forward(self, img):
         # return discriminator score for img
-        pass
+        return self.net(img)
 
+class MiniMax(nn.Module):
+    def __init__(self):
+        super(MiniMax, self).__init__()
 
-def train(dataloader, discriminator, generator, optimizer_G, optimizer_D):
+    def discriminator_loss(self, pred_real, pred_fake):
+        return -0.5 * torch.log(pred_real).mean(dim=0) - 0.5 * torch.log(1 - pred_fake).mean(dim=0)
+
+    def generator_loss(self, pred_real, pred_fake):
+        return -self.discriminator_loss(pred_real, pred_fake)
+
+def train(dataloader, discriminator, generator, optimizer_G, optimizer_D, game):
+
+    discriminator = discriminator.to(args.device)
+    generator = generator.to(args.device)
+
     for epoch in range(args.n_epochs):
         for i, (imgs, _) in enumerate(dataloader):
 
-            imgs.cuda()
+            imgs.to(args.device)
+            imgs = imgs.view(args.batch_size, 784)
 
-            # Train Generator
-            # ---------------
+            # generate images
+            z = torch.randn(args.batch_size, args.latent_dim)
+            generated_images = generator(z)
 
-            # Train Discriminator
-            # -------------------
-            optimizer_D.zero_grad()
+            # score both sets of images using current discriminator parameters
+            pred_real = discriminator(imgs.view(args.batch_size, -1))
+            pred_fake = discriminator(generated_images)
+
+            # calculate losses
+            # loss_G = 0.5 * torch.log(pred_real).mean(dim=0) + 0.5 * torch.log(1 - pred_fake).mean(dim=0)
+            loss_G = game.generator_loss(pred_real, pred_fake)
+            # loss_D = -0.5 * torch.log(pred_real).mean(dim=0) - 0.5 * torch.log(1 - pred_fake).mean(dim=0)
+            loss_D = game.discriminator_loss(pred_real, pred_fake)
+
+            # backward passes
+            generator.zero_grad()
+            loss_G.backward(retain_graph=True)
+            optimizer_G.step()
+
+            discriminator.zero_grad()
+            loss_D.backward()
+            optimizer_D.step()
+
 
             # Save Images
             # -----------
@@ -76,6 +130,8 @@ def train(dataloader, discriminator, generator, optimizer_G, optimizer_D):
                 #            nrow=5, normalize=True)
                 pass
 
+            if batches_done % args.print_interval == 0:
+                print(f'{batches_done}/{args.n_epochs*len(dataloader)}\t\tD:{loss_D.item()}\t\tG:{loss_G.item()}')
 
 def main():
     # Create output image directory
@@ -91,17 +147,18 @@ def main():
         batch_size=args.batch_size, shuffle=True)
 
     # Initialize models and optimizers
-    generator = Generator()
+    generator = Generator(args.latent_dim)
     discriminator = Discriminator()
     optimizer_G = torch.optim.Adam(generator.parameters(), lr=args.lr)
     optimizer_D = torch.optim.Adam(discriminator.parameters(), lr=args.lr)
+    game = MiniMax()
 
     # Start training
-    train(dataloader, discriminator, generator, optimizer_G, optimizer_D)
+    train(dataloader, discriminator, generator, optimizer_G, optimizer_D, game)
 
     # You can save your generator here to re-use it to generate images for your
     # report, e.g.:
-    # torch.save(generator.state_dict(), "mnist_generator.pt")
+    torch.save(generator, "mnist_generator.pt")
 
 
 if __name__ == "__main__":
@@ -116,6 +173,10 @@ if __name__ == "__main__":
                         help='dimensionality of the latent space')
     parser.add_argument('--save_interval', type=int, default=500,
                         help='save every SAVE_INTERVAL iterations')
+    parser.add_argument('--device', type=str, default='cpu',
+                        help='torch.device')
+    parser.add_argument('--print_interval', type=int, default=20,
+                        help='print every PRINT_INTERVAL iteratrions')
     args = parser.parse_args()
 
     main()
