@@ -1,2 +1,6 @@
 *.pdf
 *.zip
+**/.idea
+**/.ipynb_checkpoints
+**/__pychache__
+*.pyc
