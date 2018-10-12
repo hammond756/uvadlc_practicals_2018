@@ -40,7 +40,7 @@ class Generator(nn.Module):
             nn.BatchNorm1d(1024),
             nn.LeakyReLU(0.2),
             nn.Linear(1024, 784),
-            nn.Sigmoid()
+            nn.Tanh()
         )
 
     def forward(self, z):
@@ -92,14 +92,14 @@ def train(dataloader, discriminator, generator, optimizer_G, optimizer_D, game):
         for i, (imgs, _) in enumerate(dataloader):
 
             imgs.to(args.device)
-            imgs = imgs.view(args.batch_size, 784)
+            imgs = imgs.view(-1, 784)
 
             # generate images
             z = torch.randn(args.batch_size, args.latent_dim)
             generated_images = generator(z)
 
             # score both sets of images using current discriminator parameters
-            pred_real = discriminator(imgs.view(args.batch_size, -1))
+            pred_real = discriminator(imgs)
             pred_fake = discriminator(generated_images)
 
             # calculate losses
@@ -125,13 +125,13 @@ def train(dataloader, discriminator, generator, optimizer_G, optimizer_D, game):
                 # You can use the function save_image(Tensor (shape Bx1x28x28),
                 # filename, number of rows, normalize) to save the generated
                 # images, e.g.:
-                # save_image(gen_imgs[:25],
-                #            'images/{}.png'.format(batches_done),
-                #            nrow=5, normalize=True)
+                save_image(generated_images[:25].view(-1, 1, 28, 28),
+                           'images/{}.png'.format(batches_done),
+                           nrow=5, normalize=True)
                 pass
 
             if batches_done % args.print_interval == 0:
-                print(f'{batches_done}/{args.n_epochs*len(dataloader)}\t\tD:{loss_D.item()}\t\tG:{loss_G.item()}')
+                print(f'{batches_done}/{args.n_epochs*len(dataloader)}\t\tD:{loss_D.item():.5f}\t\tG:{loss_G.item():.5f}')
 
 def main():
     # Create output image directory
