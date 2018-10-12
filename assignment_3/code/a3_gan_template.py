@@ -95,7 +95,7 @@ def train(dataloader, discriminator, generator, optimizer_G, optimizer_D, game):
             imgs = imgs.view(-1, 784)
 
             # generate images
-            z = torch.randn(args.batch_size, args.latent_dim)
+            z = torch.randn(args.batch_size, args.latent_dim).to(args.device)
             generated_images = generator(z)
 
             # score both sets of images using current discriminator parameters
